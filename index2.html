@@ -1,0 +1,895 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Genshin card game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+
+        .zone_saisie {
+            background: #000;
+            padding: 3px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .zone_saisie input {
+            border: 0;
+            padding: 10px;
+            width: 90%;
+            margin-right: .5%;
+        }
+
+        .zone_saisie button {
+            width: 9%;
+            background: rgb(130, 224, 255);
+            border: none;
+            padding: 10px;
+        }
+
+        #messages {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #messages li {
+            padding: 5px 10px;
+        }
+
+        #messages li:nth-child(odd) {
+            background: #eee;
+        }
+
+        /*#ayaya {
+      width: 300px;
+      position: absolute;
+      top: 20%;
+      left: 40%;
+      transition: transform 1s;
+      transition-timing-function: ease-out;
+    }*/
+
+        @keyframes mymove {
+            from {
+                top: 0px;
+            }
+
+            to {
+                top: 200px;
+            }
+        }
+
+        .cartes {
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: auto;
+            grid-gap: 1rem;
+            display: none;
+        }
+
+        .cartes img {
+            border: 2px solid #e7e7e7;
+            border-radius: 4px;
+            padding: .5rem;
+            display: flex;
+            width: 200px;
+            position: relative;
+            top: 20%;
+            left: 40%;
+            transition: transform 0.8s;
+            transition-timing-function: ease-out;
+        }
+
+        body {
+
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: black;
+            overflow: hidden;
+        }
+
+        .scene,
+        .scene2,
+        .scene3,
+        .scene4 {
+            width: 1000px;
+            display: flex;
+
+            perspective: 800px;
+        }
+
+        .scene .card,
+        .scene2 .card,
+        .scene3 .card,
+        .scene4 .card {
+            position: relative;
+            width: 95px;
+            height: 156px;
+            color: white;
+            cursor: pointer;
+            margin-right: 15px;
+            margin-top: 10px;
+            transition: 0.8s ease-in-out;
+            transform-style: preserve-3d;
+        }
+
+
+        .deg {
+            transform: rotateY(0.5turn);
+        }
+
+        .degend {
+            transform: rotateY(0.5turn) !important;
+        }
+
+        .degoff {
+            transform: rotateY(0turn);
+        }
+
+        .scene .card .card__face,
+        .scene2 .card .card__face,
+        .scene3 .card .card__face,
+        .scene4 .card .card__face {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transition: 0.8s ease-in-out;
+
+        }
+
+        .scene .card .card__face img,
+        .scene2 .card .card__face img,
+        .scene3 .card .card__face img,
+        .scene4 .card .card__face img {
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .scene .card .card__face--back,
+        .scene2 .card .card__face--back,
+        .scene3 .card .card__face--back,
+        .scene4 .card .card__face--back {
+            transform: rotateY(0.5turn);
+        }
+
+        .parent {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+            position: absolute;
+            top: 4%;
+            left: 25%;
+        }
+
+
+
+        .parent img {
+            width: 50%;
+            position: absolute;
+        }
+
+        .div1 {
+            grid-area: 1 / 1 / 2 / 2;
+        }
+
+        .div2 {
+            grid-area: 1 / 2 / 2 / 3;
+        }
+
+        .div3 {
+            grid-area: 1 / 3 / 2 / 4;
+        }
+
+        .div4 {
+            grid-area: 1 / 4 / 2 / 5;
+        }
+
+        .div5 {
+            grid-area: 1 / 5 / 2 / 6;
+        }
+
+        .div6 {
+            grid-area: 2 / 1 / 3 / 2;
+        }
+
+        .div7 {
+            grid-area: 2 / 2 / 3 / 3;
+        }
+
+        .div8 {
+            grid-area: 2 / 3 / 3 / 4;
+        }
+
+        .div9 {
+            grid-area: 2 / 4 / 3 / 5;
+        }
+
+        .div10 {
+            grid-area: 2 / 5 / 3 / 6;
+        }
+
+        .div11 {
+            grid-area: 3 / 1 / 4 / 2;
+        }
+
+        .div12 {
+            grid-area: 3 / 2 / 4 / 3;
+        }
+
+        .div13 {
+            grid-area: 3 / 3 / 4 / 4;
+        }
+
+        .div14 {
+            grid-area: 3 / 4 / 4 / 5;
+        }
+
+        .div15 {
+            grid-area: 3 / 5 / 4 / 6;
+        }
+
+        .div16 {
+            grid-area: 4 / 1 / 5 / 2;
+        }
+
+        .div17 {
+            grid-area: 4 / 2 / 5 / 3;
+        }
+
+        .div18 {
+            grid-area: 4 / 3 / 5 / 4;
+        }
+
+        .div19 {
+            grid-area: 4 / 4 / 5 / 5;
+        }
+
+        .div20 {
+            grid-area: 4 / 5 / 5 / 6;
+        }
+
+        .nonead {
+            display: none;
+        }
+
+        .point {
+            font-size: 70px;
+            top: 60px;
+            left: 130px;
+            position: absolute;
+        }
+        @media screen and (max-width: 1090px) {
+            .parent {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+            position: absolute;
+            top: 35%;
+            left: 7%;
+            }
+            .scene .card,
+        .scene2 .card,
+        .scene3 .card,
+        .scene4 .card {
+            position: relative;
+            width: 125px;
+            height: 216px;
+            color: white;
+            cursor: pointer;
+            margin-right: 15px;
+            margin-top: 10px;
+            transition: 0.8s ease-in-out;
+            transform-style: preserve-3d;
+        }
+        .point {
+            font-size: 140px;
+            top: 477px;
+            left: 512px;
+            position: absolute;
+        }
+        }
+    </style>
+</head>
+
+<body>
+   
+    <script>
+        var help = document.querySelector('.card__face--back')
+        //var socket = io();
+        var envers = 1;
+        /*var send = function (oui) {
+            var text = document.getElementById('m').value;
+            socket.emit('chat message', text);
+            const f = document.getElementById('ayaya');
+
+
+        }*/
+        const array = [
+            'https://genshin.honeyhunterworld.com/img/i_n330000_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330001_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330002_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330003_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330004_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330005_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330006_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330007_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330008_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330010_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330011_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330012_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330013_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330014_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330000_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330001_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330002_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330003_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330004_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330005_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330006_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330007_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330008_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330010_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330011_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330012_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330013_gcg_high_resolution.webp',
+            'https://genshin.honeyhunterworld.com/img/i_n330014_gcg_high_resolution.webp'
+
+        ];
+        window.addEventListener("load", (event) => {
+            // Mélange les éléments de l'array de manière aléatoire
+            function shuffle(arr) {
+                for (let i = arr.length - 1; i > 0; i--) {
+                    // Choisir un index aléatoire
+                    const j = Math.floor(Math.random() * (i + 1));
+                    // Echanger les valeurs de l'élément courant et l'élément aléatoire
+                    [arr[i], arr[j]] = [arr[j], arr[i]];
+                }
+            }
+
+            shuffle(array);
+
+            // Récupère les éléments avec la classe "truc"
+            const images = document.getElementsByClassName("truc");
+
+            // Boucle sur les éléments récupérés
+            for (let i = 0; i < images.length; i++) {
+                // Affecte l'url mélangée à la propriété src de chaque élément
+                images[i].src = array[i];
+            }
+            console.log("page is fully loaded");
+        })
+
+
+
+
+
+
+        function myFunction() {
+            alert("Hello World!");
+        }
+
+        
+        /*var receive = function (msg) {
+            var li = document.createElement('li');
+            li.innerText = msg;
+            document.getElementById('messages').appendChild(li);
+            
+
+            const elem = document.querySelector(".card");
+            const f = document.getElementById('ayaya');
+
+            if (envers == 1) {
+                f.style.transform = `rotateY(180deg)`;
+                elem.classList.remove("degoff");
+                elem.classList.add("deg");
+
+                console.log('a user is disconnected');
+                envers = 2;
+            } else {
+                f.style.transform = `rotateY(0deg)`;
+                elem.classList.remove("deg");
+                elem.classList.add("degoff");
+                envers = 1;
+            }
+            console.log("Carte tourné");
+
+        }*/
+
+        window.addEventListener("load", (event) => {
+            var two = 1;
+          // setInterval(() => {
+            document.querySelector(".scene").addEventListener("click", e => {
+
+                //if (e.target.localName !== "img") return;
+                e.target.setAttribute("name", "helloButton");
+                var closest = e.target.closest(".card");
+                var egal = e.target.closest(".card");
+               
+                    dab();
+                    envers = 2;
+                    closest.classList.remove("degoff");
+                    closest.classList.add("deg");
+                    
+                    if (two == 2) {
+                        envers = 1;
+                        setTimeout(() => {
+                            const rep = document.getElementsByClassName("card deg");
+                            var rep1 = rep[0];
+                            var rep2 = rep[1];
+                            var egal = rep1.querySelector(".truc");
+                            var egal2 = rep2.querySelector(".truc");
+                            if (egal.src == egal2.src) {
+
+                                rep1.classList.remove("deg");
+                                rep1.classList.add("degend");
+                                rep2.classList.remove("deg");
+                                rep2.classList.add("degend");
+                            } else {
+                                // Boucle sur les éléments récupérés
+                                for (let i = 0; i < rep.length + 1; i++) {
+                                    // Affecte l'url mélangée à la propriété src de chaque élément
+                                    rep[i].classList.remove("deg");
+                                    rep[i].classList.add("degoff");
+
+                                }
+
+                            }
+
+                        }, 1100);
+                        two = 1;
+                        //console.log(two);
+                    } else {
+                        two++;
+                        console.log("two plus 1");
+                        //console.log(two);
+                    }
+                    var choix = document.getElementsByClassName("card deg");
+                    choix = choix.length;
+                    if (choix == 1) {
+                        envers = 1;
+                    }
+                
+                var bug = document.querySelector(".card.deg.degoff");
+                if (bug !== null) {
+                    bug.classList.remove("deg");
+                }
+                console.log(envers);
+                
+                    
+            }, { passive: true })
+        //}, 2000);
+
+            function dab() {
+                var points = document.querySelector(".point");
+                console.log("points" + points)
+                var pts = points.textContent;
+                console.log("pts1" + pts)
+                var pts = +pts
+                console.log("pts2" + pts)
+                pts++;
+                console.log("pts" + pts)
+                points.textContent = pts;
+                console.log("point ajouter" + pts)
+            }
+
+
+
+            document.querySelector(".scene2").addEventListener("click", e => {
+                //if (e.target.localName !== "img") return;
+                dab();
+                var closest = e.target.closest(".card");
+                
+                    var choix = document.getElementsByClassName("card deg");
+                    choix = choix.length;
+                    if (choix == 1) {
+                        envers = 1;
+                    }
+                    closest.classList.remove("degoff");
+                    closest.classList.add("deg");
+                    if (two == 2) {
+
+                        setTimeout(() => {
+                            const rep = document.getElementsByClassName("card deg");
+                            var rep1 = rep[0];
+                            var rep2 = rep[1];
+                            var egal = rep1.querySelector(".truc");
+                            var egal2 = rep2.querySelector(".truc");
+                            if (egal.src == egal2.src) {
+
+                                rep1.classList.remove("deg");
+                                rep1.classList.add("degend");
+                                rep2.classList.remove("deg");
+                                rep2.classList.add("degend");
+                            } else {
+                                // Boucle sur les éléments récupérés
+                                for (let i = 0; i < rep.length + 1; i++) {
+                                    // Affecte l'url mélangée à la propriété src de chaque élément
+                                    rep[i].classList.remove("deg");
+                                    rep[i].classList.add("degoff");
+
+                                }
+                            }
+
+                        }, 1100);
+                        two = 1;
+                        console.log(two);
+                    } else {
+                        two++;
+                        console.log("two plus 1");
+                        console.log(two);
+                    }
+                    envers = 2;
+                
+                   
+                
+                var bug = document.querySelector(".card.deg.degoff");
+                if (bug !== null) {
+                    bug.classList.remove("deg");
+                }
+                
+
+            }, { passive: true })
+
+            document.querySelector(".scene3").addEventListener("click", e => {
+                //if (e.target.localName !== "img") return;
+                dab();
+                var closest = e.target.closest(".card");
+                
+                    var choix = document.getElementsByClassName("card deg");
+                    choix = choix.length;
+                    if (choix == 1) {
+                        envers = 1;
+                    }
+                    closest.classList.remove("degoff");
+                    closest.classList.add("deg");
+                    if (two == 2) {
+
+                        setTimeout(() => {
+                            const rep = document.getElementsByClassName("card deg");
+                            var rep1 = rep[0];
+                            var rep2 = rep[1];
+                            var egal = rep1.querySelector(".truc");
+                            var egal2 = rep2.querySelector(".truc");
+                            if (egal.src == egal2.src) {
+
+                                rep1.classList.remove("deg");
+                                rep1.classList.add("degend");
+                                rep2.classList.remove("deg");
+                                rep2.classList.add("degend");
+                            } else {
+                                // Boucle sur les éléments récupérés
+                                for (let i = 0; i < rep.length + 1; i++) {
+                                    // Affecte l'url mélangée à la propriété src de chaque élément
+                                    rep[i].classList.remove("deg");
+                                    rep[i].classList.add("degoff");
+
+                                }
+                            }
+
+                        }, 1100);
+                        two = 1;
+                        console.log(two);
+                    } else {
+                        two++;
+                        console.log("two plus 1");
+                        console.log(two);
+                    }
+                    envers = 2;
+                
+                    
+                
+                var bug = document.querySelector(".card.deg.degoff");
+                if (bug !== null) {
+                    bug.classList.remove("deg");
+                }
+            }, { passive: true })
+            document.querySelector(".scene4").addEventListener("click", e => {
+                //if (e.target.localName !== "img") return;
+                dab();
+                var closest = e.target.closest(".card");
+              
+                    var choix = document.getElementsByClassName("card deg");
+                    choix = choix.length;
+                    if (choix == 1) {
+                        envers = 1;
+                    }
+                    closest.classList.remove("degoff");
+                    closest.classList.add("deg");
+                    if (two == 2) {
+
+                        setTimeout(() => {
+                            const rep = document.getElementsByClassName("card deg");
+                            var rep1 = rep[0];
+                            var rep2 = rep[1];
+                            var egal = rep1.querySelector(".truc");
+                            var egal2 = rep2.querySelector(".truc");
+                            if (egal.src == egal2.src) {
+
+                                rep1.classList.remove("deg");
+                                rep1.classList.add("degend");
+                                rep2.classList.remove("deg");
+                                rep2.classList.add("degend");
+                            } else {
+                                // Boucle sur les éléments récupérés
+                                for (let i = 0; i < rep.length + 1; i++) {
+                                    // Affecte l'url mélangée à la propriété src de chaque élément
+                                    rep[i].classList.remove("deg");
+                                    rep[i].classList.add("degoff");
+
+                                }
+                            }
+
+                        }, 1100);
+                        two = 1;
+                        console.log(two);
+                    } else {
+                        two++;
+                        console.log("two plus 1");
+                        console.log(two);
+                    }
+                    envers = 2;
+                
+                    
+                
+                var bug = document.querySelector(".card.deg.degoff");
+                if (bug !== null) {
+                    bug.classList.remove("deg");
+                }
+            }, { passive: true })
+            
+               
+        })
+
+
+
+       // socket.on('chat message', receive);
+
+    </script>
+    <div>
+        <p class="point">0</p>
+    </div>
+    <div class="nonead">
+        <ul id="messages"></ul>
+        <div class="zone_saisie">
+            <input id="m" /> <button onclick="send()">Send</button>
+
+
+        </div>
+
+    </div>
+    <div class="parent">
+        <div class="scene">
+
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back">
+                    <img class="truc">
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"> <img class="truc"></div>
+            </div>
+
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"> <img class="truc"></div>
+            </div>
+
+
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+
+        </div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div class="scene2">
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+        </div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div class="scene4">
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+        </div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div class="scene3">
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cartes">
+        <img id="ayaya"
+            src="https://oyster.ignimgs.com/mediawiki/apis.ign.com/genshin-impact/e/e2/Ayaka_Genius_Invokation_Card_2.png?width=1920"
+            alt="ayaka">
+        <img id="ganyu"
+            src="https://oyster.ignimgs.com/mediawiki/apis.ign.com/genshin-impact/e/e2/Ayaka_Genius_Invokation_Card_2.png?width=1920"
+            alt="ganyu">
+        <img id="diluc"
+            src="https://oyster.ignimgs.com/mediawiki/apis.ign.com/genshin-impact/4/42/Diluc_Genius_Invokation_Card_2.png?width=960"
+            alt="diluc">
+
+        <img id="chong" src="https://genshin.honeyhunterworld.com/img/i_n330002_gcg_high_resolution.web" alt="chong">
+    </div>
+
+
+</body>
+
+</html>
