@@ -424,12 +424,13 @@
                 var closest = e.target.closest(".card");
                 var egal = e.target.closest(".card");
                
-                    dab();
+                    
                     envers = 2;
                     closest.classList.remove("degoff");
                     closest.classList.add("deg");
                     
                     if (two == 2) {
+                        dab();
                         envers = 1;
                         setTimeout(() => {
                             const rep = document.getElementsByClassName("card deg");
@@ -458,6 +459,7 @@
                         two = 1;
                         //console.log(two);
                     } else {
+                        dab();
                         two++;
                         console.log("two plus 1");
                         //console.log(two);
@@ -492,10 +494,13 @@
             }
 
 
-
+            
             document.querySelector(".scene2").addEventListener("click", e => {
+                
+                    
+                
                 //if (e.target.localName !== "img") return;
-                dab();
+                
                 var closest = e.target.closest(".card");
                 
                     var choix = document.getElementsByClassName("card deg");
@@ -506,7 +511,8 @@
                     closest.classList.remove("degoff");
                     closest.classList.add("deg");
                     if (two == 2) {
-
+                        
+                        dab();
                         setTimeout(() => {
                             const rep = document.getElementsByClassName("card deg");
                             var rep1 = rep[0];
@@ -532,10 +538,14 @@
                         }, 1100);
                         two = 1;
                         console.log(two);
+                   
                     } else {
+                        
+                        dab();
                         two++;
                         console.log("two plus 1");
                         console.log(two);
+                  
                     }
                     envers = 2;
                 
@@ -546,12 +556,12 @@
                     bug.classList.remove("deg");
                 }
                 
-
+            
             }, { passive: true })
 
             document.querySelector(".scene3").addEventListener("click", e => {
                 //if (e.target.localName !== "img") return;
-                dab();
+                
                 var closest = e.target.closest(".card");
                 
                     var choix = document.getElementsByClassName("card deg");
@@ -562,6 +572,7 @@
                     closest.classList.remove("degoff");
                     closest.classList.add("deg");
                     if (two == 2) {
+                        dab();
 
                         setTimeout(() => {
                             const rep = document.getElementsByClassName("card deg");
@@ -589,6 +600,7 @@
                         two = 1;
                         console.log(two);
                     } else {
+                        dab();
                         two++;
                         console.log("two plus 1");
                         console.log(two);
@@ -604,7 +616,7 @@
             }, { passive: true })
             document.querySelector(".scene4").addEventListener("click", e => {
                 //if (e.target.localName !== "img") return;
-                dab();
+                
                 var closest = e.target.closest(".card");
               
                     var choix = document.getElementsByClassName("card deg");
@@ -615,7 +627,7 @@
                     closest.classList.remove("degoff");
                     closest.classList.add("deg");
                     if (two == 2) {
-
+                        dab();
                         setTimeout(() => {
                             const rep = document.getElementsByClassName("card deg");
                             var rep1 = rep[0];
@@ -642,6 +654,7 @@
                         two = 1;
                         console.log(two);
                     } else {
+                        dab();
                         two++;
                         console.log("two plus 1");
                         console.log(two);
