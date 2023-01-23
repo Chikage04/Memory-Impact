@@ -281,7 +281,7 @@
             top: 60px;
             left: 180px;
             position: absolute;
-            transition: all 5s;
+            transition: all 8s;
             color: white;
         }
 
@@ -322,14 +322,14 @@
 
             .point {
                 font-size: 140px;
-                top: 470px;
-                left: 838px;
+                top: 450px;
+                left: 870px;
                 position: absolute;
             }
 
             #timer {
                 font-size: 140px;
-                top: 470px;
+                top: 450px;
                 left: 110px;
                 position: absolute;
             }
@@ -570,12 +570,16 @@
 
             }, { passive: true })
             //}, 2000);
-
+            function isMobile() { return ('ontouchstart' in document.documentElement); }
             function dab() {
                 var points = document.querySelector(".point");
                 var pts = +points.textContent;
                 if (pts >= 9){
-                    points.style.left = "170px"
+                    if (isMobile()) {
+                    points.style.left = "844px"
+                    } else {
+                        points.style.left = "170px"
+                    }
                 }
                 points.textContent = ++pts;
             }
