@@ -4,10 +4,17 @@
 <head>
     <title>Genshin card game</title>
     <style>
+        @import url("https://fonts.googleapis.com/css2?family=Contrail+One&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap");
+        @import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Baloo 2', cursive;
         }
 
 
@@ -272,7 +279,14 @@
         .point {
             font-size: 70px;
             top: 60px;
-            left: 130px;
+            left: 140px;
+            position: absolute;
+        }
+
+        #timer {
+            font-size: 70px;
+            top: 160px;
+            left: 70px;
             position: absolute;
         }
 
@@ -306,6 +320,13 @@
             .point {
                 font-size: 140px;
                 top: 477px;
+                left: 512px;
+                position: absolute;
+            }
+
+            #timer {
+                font-size: 140px;
+                top: 577px;
                 left: 512px;
                 position: absolute;
             }
@@ -417,57 +438,116 @@
 
         }*/
         var stop = 1;
+        var compte = 2;
+        var ok = 1;
         window.addEventListener("load", (event) => {
+
+            function comptes(np) {
+                if (ok == 1) {
+                    ok = 2;
+                    if (compte == 1) {
+                        var fini = document.getElementsByClassName("degend");
+                        fini = fini.length;
+
+
+                        let temps = 1
+                        const timerElement = document.getElementById("timer")
+                        setInterval(() => {
+                            if (fini < 28) {
+                                fini = document.getElementsByClassName("degend");
+                                fini = fini.length;
+                                let minutes = parseInt(temps / 60, 10)
+                                let secondes = parseInt(temps % 60, 10)
+
+                                minutes = minutes < 10 ? "0" + minutes : minutes
+                                secondes = secondes < 10 ? "0" + secondes : secondes
+
+                                timerElement.innerText = `${minutes}:${secondes}`
+                                temps = temps < 0 ? 0 : temps + 1
+                            }
+                        }, 1000)
+
+
+                    }
+                }
+
+            }
+
+
+
+
+
+
+
+
+
             var two = 1;
             // setInterval(() => {
+
             document.querySelector(".scene").addEventListener("click", e => {
+
                 if (stop == 1) {
+
                     stop = 2;
+                    compte = 1;
+                    comptes();
                     //if (e.target.localName !== "img") return;
-                    
+
                     var closest = e.target.closest(".card");
                     var egal = e.target.closest(".card");
 
+                    //var jsp = document.getElementsByClassName("degoff");
+                    // if (jsp > 0) { }
+                    if (closest !== null && closest !== undefined) {
+                        closest.classList.remove("degoff");
+                        closest.classList.add("deg");
+                        if (two == 2) {
 
-                   // if (bug !== null && bug !== undefined) {
-                   closest.classList.remove("degoff");
-                   closest.classList.add("deg");
+                            envers = 1;
 
-                    if (two == 2) {
-                        dab();
-                        envers = 1;
-                        setTimeout(() => {
                             const rep = document.getElementsByClassName("card deg");
-                            var rep1 = rep[0];
-                            var rep2 = rep[1];
-                            var egal = rep1.querySelector(".truc");
-                            var egal2 = rep2.querySelector(".truc");
-                            if (egal.src == egal2.src) {
 
-                                rep1.classList.remove("deg");
-                                rep1.classList.add("degend");
-                                rep2.classList.remove("deg");
-                                rep2.classList.add("degend");
-                            } else {
-                                // Boucle sur les éléments récupérés
-                                for (let i = 0; i < rep.length; i++) {
-                                    // Affecte l'url mélangée à la propriété src de chaque élément
-                                    rep[i].classList.remove("deg");
-                                    rep[i].classList.add("degoff");
+                            if (rep[1] !== null && rep[1] !== undefined) {
+                                 dab();
+                                setTimeout(() => {
+                                   
+                                    var rep1 = rep[0];
+                                    var rep2 = rep[1];
+                                    var egal = rep1.querySelector(".truc");
+                                    var egal2 = rep2.querySelector(".truc");
 
-                                }
+                                    if (egal.src == egal2.src) {
 
+                                        rep1.classList.remove("deg");
+                                        rep1.classList.add("degend");
+                                        rep2.classList.remove("deg");
+                                        rep2.classList.add("degend");
+                                    } else {
+                                        // Boucle sur les éléments récupérés
+                                        for (let i = 0; i < rep.length; i++) {
+                                            // Affecte l'url mélangée à la propriété src de chaque élément
+                                            rep[i].classList.remove("deg");
+                                            rep[i].classList.add("degoff");
+
+                                        }
+
+                                    }
+                                    
+                                }, 950);
+                                two = 1;
                             }
 
-                        }, 950);
-                        two = 1;
-                        //console.log(two);
-                    } else {
-                        dab();
-                        two++;
-                        console.log("two plus 1");
-                        //console.log(two);
+
+                            console.log("true" + two);
+                        } else {
+                            dab();
+                            two++;
+                            console.log("two plus 1");
+                            //console.log(two);
+                        }
                     }
+
+
                     var choix = document.getElementsByClassName("card deg");
                     choix = choix.length;
                     if (choix == 1) {
@@ -499,65 +579,70 @@
             document.querySelector(".scene2").addEventListener("click", e => {
                 if (stop == 1) {
                     stop = 2;
+                    compte = 1;
+                    comptes();
 
+                    //if (e.target.localName !== "img") return;
 
-                //if (e.target.localName !== "img") return;
+                    var closest = e.target.closest(".card");
 
-                var closest = e.target.closest(".card");
-
-                var choix = document.getElementsByClassName("card deg");
-                choix = choix.length;
-                if (choix == 1) {
-                    envers = 1;
-                }
-                closest.classList.remove("degoff");
-                closest.classList.add("deg");
-                if (two == 2) {
-                        dab();
+                    var choix = document.getElementsByClassName("card deg");
+                    choix = choix.length;
+                    if (choix == 1) {
                         envers = 1;
-                        setTimeout(() => {
+                    }
+                    if (closest !== null && closest !== undefined) {
+                        closest.classList.remove("degoff");
+                        closest.classList.add("deg");
+                        if (two == 2) {
+
+                            envers = 1;
                             const rep = document.getElementsByClassName("card deg");
-                            var rep1 = rep[0];
-                            var rep2 = rep[1];
-                            var egal = rep1.querySelector(".truc");
-                            var egal2 = rep2.querySelector(".truc");
-                            if (egal.src == egal2.src) {
 
-                                rep1.classList.remove("deg");
-                                rep1.classList.add("degend");
-                                rep2.classList.remove("deg");
-                                rep2.classList.add("degend");
-                            } else {
-                                // Boucle sur les éléments récupérés
-                                for (let i = 0; i < rep.length; i++) {
-                                    // Affecte l'url mélangée à la propriété src de chaque élément
-                                    rep[i].classList.remove("deg");
-                                    rep[i].classList.add("degoff");
+                            if (rep[1] !== null && rep[1] !== undefined) {
+                                 dab();
+                                setTimeout(() => {
+                                   
+                                    var rep1 = rep[0];
+                                    var rep2 = rep[1];
+                                    var egal = rep1.querySelector(".truc");
+                                    var egal2 = rep2.querySelector(".truc");
 
-                                }
+                                    if (egal.src == egal2.src) {
 
+                                        rep1.classList.remove("deg");
+                                        rep1.classList.add("degend");
+                                        rep2.classList.remove("deg");
+                                        rep2.classList.add("degend");
+                                    } else {
+                                        // Boucle sur les éléments récupérés
+                                        for (let i = 0; i < rep.length; i++) {
+                                            // Affecte l'url mélangée à la propriété src de chaque élément
+                                            rep[i].classList.remove("deg");
+                                            rep[i].classList.add("degoff");
+
+                                        }
+
+                                    }
+                                    
+                                }, 950);
+                                two = 1;
                             }
 
-                        }, 950);
-                        two = 1;
-                        //console.log(two);
-                    } else {
-                        dab();
-                        two++;
-                        console.log("two plus 1");
-                        //console.log(two);
+                            console.log("true" + two);
+                        } else {
+                            dab();
+                            two++;
+                            console.log("two plus 1");
+                            //console.log(two);
+                        }
                     }
-
-
-
-
-
-                var bug = document.querySelector(".card.deg.degoff");
-                if (bug !== null) {
-                    bug.classList.remove("deg");
-                    bug.classList.remove("degoff");
-                }
-                setTimeout(() => {
+                    var bug = document.querySelector(".card.deg.degoff");
+                    if (bug !== null) {
+                        bug.classList.remove("deg");
+                        bug.classList.remove("degoff");
+                    }
+                    setTimeout(() => {
                         stop = 1;
                     }, 900);
                 }
@@ -568,58 +653,67 @@
                 //if (e.target.localName !== "img") return;
                 if (stop == 1) {
                     stop = 2;
-                var closest = e.target.closest(".card");
+                    compte = 1;
+                    comptes();
+                    var closest = e.target.closest(".card");
 
-                var choix = document.getElementsByClassName("card deg");
-                choix = choix.length;
-                if (choix == 1) {
-                    envers = 1;
-                }
-                closest.classList.remove("degoff");
-                closest.classList.add("deg");
-                if (two == 2) {
-                    dab();
+                    var choix = document.getElementsByClassName("card deg");
+                    choix = choix.length;
+                    if (choix == 1) {
+                        envers = 1;
+                    }
+                    if (closest !== null && closest !== undefined) {
+                        closest.classList.remove("degoff");
+                        closest.classList.add("deg");
+                        if (two == 2) {
 
-                    setTimeout(() => {
-                        const rep = document.getElementsByClassName("card deg");
-                        var rep1 = rep[0];
-                        var rep2 = rep[1];
-                        var egal = rep1.querySelector(".truc");
-                        var egal2 = rep2.querySelector(".truc");
-                        if (egal.src == egal2.src) {
+                            envers = 1;
+                            const rep = document.getElementsByClassName("card deg");
 
-                            rep1.classList.remove("deg");
-                            rep1.classList.add("degend");
-                            rep2.classList.remove("deg");
-                            rep2.classList.add("degend");
-                        } else {
-                            // Boucle sur les éléments récupérés
-                            for (let i = 0; i < rep.length; i++) {
-                                // Affecte l'url mélangée à la propriété src de chaque élément
-                                rep[i].classList.remove("deg");
-                                rep[i].classList.add("degoff");
+                            if (rep[1] !== null && rep[1] !== undefined) {
+                                 dab();
+                                setTimeout(() => {
+                                   
+                                    var rep1 = rep[0];
+                                    var rep2 = rep[1];
+                                    var egal = rep1.querySelector(".truc");
+                                    var egal2 = rep2.querySelector(".truc");
 
+                                    if (egal.src == egal2.src) {
+
+                                        rep1.classList.remove("deg");
+                                        rep1.classList.add("degend");
+                                        rep2.classList.remove("deg");
+                                        rep2.classList.add("degend");
+                                    } else {
+                                        // Boucle sur les éléments récupérés
+                                        for (let i = 0; i < rep.length; i++) {
+                                            // Affecte l'url mélangée à la propriété src de chaque élément
+                                            rep[i].classList.remove("deg");
+                                            rep[i].classList.add("degoff");
+
+                                        }
+
+                                    }
+                                    
+                                }, 950);
+                                two = 1;
                             }
+
+                            console.log("true" + two);
+                        } else {
+                            dab();
+                            two++;
+                            console.log("two plus 1");
+                            //console.log(two);
                         }
+                    }
 
-                    }, 950);
-                    two = 1;
-                    console.log(two);
-                } else {
-                    dab();
-                    two++;
-                    console.log("two plus 1");
-                    console.log(two);
-                }
-                envers = 2;
-
-
-
-                var bug = document.querySelector(".card.deg.degoff");
-                if (bug !== null) {
-                    bug.classList.remove("deg");
-                }
-                setTimeout(() => {
+                    var bug = document.querySelector(".card.deg.degoff");
+                    if (bug !== null) {
+                        bug.classList.remove("deg");
+                    }
+                    setTimeout(() => {
                         stop = 1;
                     }, 900);
                 }
@@ -628,57 +722,66 @@
                 //if (e.target.localName !== "img") return;
                 if (stop == 1) {
                     stop = 2;
-                var closest = e.target.closest(".card");
+                    compte = 1;
+                    comptes();
+                    var closest = e.target.closest(".card");
 
-                var choix = document.getElementsByClassName("card deg");
-                choix = choix.length;
-                if (choix == 1) {
-                    envers = 1;
-                }
-                closest.classList.remove("degoff");
-                closest.classList.add("deg");
-                if (two == 2) {
-                    dab();
-                    setTimeout(() => {
-                        const rep = document.getElementsByClassName("card deg");
-                        var rep1 = rep[0];
-                        var rep2 = rep[1];
-                        var egal = rep1.querySelector(".truc");
-                        var egal2 = rep2.querySelector(".truc");
-                        if (egal.src == egal2.src) {
+                    var choix = document.getElementsByClassName("card deg");
+                    choix = choix.length;
+                    if (choix == 1) {
+                        envers = 1;
+                    }
+                    if (closest !== null && closest !== undefined) {
+                        closest.classList.remove("degoff");
+                        closest.classList.add("deg");
+                        if (two == 2) {
 
-                            rep1.classList.remove("deg");
-                            rep1.classList.add("degend");
-                            rep2.classList.remove("deg");
-                            rep2.classList.add("degend");
-                        } else {
-                            // Boucle sur les éléments récupérés
-                            for (let i = 0; i < rep.length; i++) {
-                                // Affecte l'url mélangée à la propriété src de chaque élément
-                                rep[i].classList.remove("deg");
-                                rep[i].classList.add("degoff");
+                            envers = 1;
+                            const rep = document.getElementsByClassName("card deg");
 
+                            if (rep[1] !== null && rep[1] !== undefined) {
+                                 dab();
+                                setTimeout(() => {
+                                   
+                                    var rep1 = rep[0];
+                                    var rep2 = rep[1];
+                                    var egal = rep1.querySelector(".truc");
+                                    var egal2 = rep2.querySelector(".truc");
+
+                                    if (egal.src == egal2.src) {
+
+                                        rep1.classList.remove("deg");
+                                        rep1.classList.add("degend");
+                                        rep2.classList.remove("deg");
+                                        rep2.classList.add("degend");
+                                    } else {
+                                        // Boucle sur les éléments récupérés
+                                        for (let i = 0; i < rep.length; i++) {
+                                            // Affecte l'url mélangée à la propriété src de chaque élément
+                                            rep[i].classList.remove("deg");
+                                            rep[i].classList.add("degoff");
+
+                                        }
+
+                                    }
+                                    
+                                }, 950);
+                                two = 1;
                             }
+
+                            console.log("true" + two);
+                        } else {
+                            dab();
+                            two++;
+                            console.log("two plus 1");
+                            //console.log(two);
                         }
-
-                    }, 950);
-                    two = 1;
-                    console.log(two);
-                } else {
-                    dab();
-                    two++;
-                    console.log("two plus 1");
-                    console.log(two);
-                }
-                envers = 2;
-
-
-
-                var bug = document.querySelector(".card.deg.degoff");
-                if (bug !== null) {
-                    bug.classList.remove("deg");
-                }
-                setTimeout(() => {
+                    }
+                    var bug = document.querySelector(".card.deg.degoff");
+                    if (bug !== null) {
+                        bug.classList.remove("deg");
+                    }
+                    setTimeout(() => {
                         stop = 1;
                     }, 900);
                 }
@@ -689,11 +792,16 @@
 
 
 
+
+
+
        // socket.on('chat message', receive);
 
     </script>
     <div>
         <p class="point">0</p>
+
+        <div id="timer">00:00</div>
     </div>
     <div class="nonead">
         <ul id="messages"></ul>
