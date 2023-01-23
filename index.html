@@ -281,6 +281,7 @@
             top: 60px;
             left: 140px;
             position: absolute;
+            transition: all 5s;
             color: white;
         }
 
@@ -321,15 +322,15 @@
 
             .point {
                 font-size: 140px;
-                top: 477px;
-                left: 512px;
+                top: 470px;
+                left: 838px;
                 position: absolute;
             }
 
             #timer {
                 font-size: 140px;
-                top: 577px;
-                left: 512px;
+                top: 470px;
+                left: 110px;
                 position: absolute;
             }
         }
@@ -573,6 +574,9 @@
             function dab() {
                 var points = document.querySelector(".point");
                 var pts = +points.textContent;
+                if (pts >= 9){
+                    points.style.left = "130px"
+                }
                 points.textContent = ++pts;
             }
 
