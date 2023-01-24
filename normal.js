@@ -61,7 +61,7 @@ function myFunction() {
     alert("Hello World!");
 }
 
-var stop = 1;
+var stop = 2;
 var compte = 2;
 var ok = 1;
 window.addEventListener("load", (event) => {
