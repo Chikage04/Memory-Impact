@@ -440,7 +440,7 @@
             console.log("Carte tourné");
 
         }*/
-        var stop = 1;
+        var stop = 2;
         var compte = 2;
         var ok = 1;
         window.addEventListener("load", (event) => {
@@ -511,9 +511,9 @@
                             const rep = document.getElementsByClassName("card deg");
 
                             if (rep[1] !== null && rep[1] !== undefined) {
-                                 dab();
+                                dab();
                                 setTimeout(() => {
-                                   
+
                                     var rep1 = rep[0];
                                     var rep2 = rep[1];
                                     var egal = rep1.querySelector(".truc");
@@ -528,6 +528,7 @@
                                     } else {
                                         // Boucle sur les éléments récupérés
                                         for (let i = 0; i < rep.length; i++) {
+                                            
                                             // Affecte l'url mélangée à la propriété src de chaque élément
                                             rep[i].classList.remove("deg");
                                             rep[i].classList.add("degoff");
@@ -535,7 +536,7 @@
                                         }
 
                                     }
-                                    
+
                                 }, 950);
                                 two = 1;
                             }
@@ -574,9 +575,9 @@
             function dab() {
                 var points = document.querySelector(".point");
                 var pts = +points.textContent;
-                if (pts >= 9){
+                if (pts >= 9) {
                     if (isMobile()) {
-                    points.style.left = "844px"
+                        points.style.left = "844px"
                     } else {
                         points.style.left = "170px"
                     }
@@ -610,9 +611,9 @@
                             const rep = document.getElementsByClassName("card deg");
 
                             if (rep[1] !== null && rep[1] !== undefined) {
-                                 dab();
+                                dab();
                                 setTimeout(() => {
-                                   
+
                                     var rep1 = rep[0];
                                     var rep2 = rep[1];
                                     var egal = rep1.querySelector(".truc");
@@ -634,7 +635,7 @@
                                         }
 
                                     }
-                                    
+
                                 }, 950);
                                 two = 1;
                             }
@@ -681,9 +682,9 @@
                             const rep = document.getElementsByClassName("card deg");
 
                             if (rep[1] !== null && rep[1] !== undefined) {
-                                 dab();
+                                dab();
                                 setTimeout(() => {
-                                   
+
                                     var rep1 = rep[0];
                                     var rep2 = rep[1];
                                     var egal = rep1.querySelector(".truc");
@@ -705,7 +706,7 @@
                                         }
 
                                     }
-                                    
+
                                 }, 950);
                                 two = 1;
                             }
@@ -750,9 +751,9 @@
                             const rep = document.getElementsByClassName("card deg");
 
                             if (rep[1] !== null && rep[1] !== undefined) {
-                                 dab();
+                                dab();
                                 setTimeout(() => {
-                                   
+
                                     var rep1 = rep[0];
                                     var rep2 = rep[1];
                                     var egal = rep1.querySelector(".truc");
@@ -774,7 +775,7 @@
                                         }
 
                                     }
-                                    
+
                                 }, 950);
                                 two = 1;
                             }
@@ -796,8 +797,25 @@
                     }, 900);
                 }
             }, { passive: true })
-
-
+            const start = document.getElementsByClassName("card");
+            setTimeout(() => {
+                for (let i = 0; i < start.length; i++) {
+                    
+                    // Affecte l'url mélangée à la propriété src de chaque élément
+                    start[i].classList.add("deg");
+                    setTimeout(() => {
+                        start[i].classList.remove("deg");
+                        start[i].classList.add("degoff");
+                        setTimeout(() => {
+                            start[i].classList.remove("degoff");
+                            setTimeout(() => {
+                                stop = 1;
+                            }, 900);
+                            
+                        }, 130);
+                    }, 1130);
+                }
+            }, 530);
         })
 
 
