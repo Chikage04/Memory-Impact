@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Genshin card game</title>
+    <script src='normal.js'></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+    <div>
+        <p class="point">0</p>
+
+        <div id="timer">00:00</div>
+    </div>
+    <div class="nonead">
+        <ul id="messages"></ul>
+        <div class="zone_saisie">
+            <input id="m" /> <button onclick="send()">Send</button>
+        </div>
+    </div>
+    <div class="nonead">
+        <ul id="messages"></ul>
+        <form class="zone_saisie">
+            <input id="m" autocomplete="off" placeholder="Type a message and press Enter" required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <div class="parent">
+        <div class="scene">
+
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back">
+                    <img class="truc">
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"> <img class="truc"></div>
+            </div>
+
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"> <img class="truc"></div>
+            </div>
+
+
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+
+        </div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div class="scene2">
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+        </div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div class="scene4">
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+        </div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div class="scene3">
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <img src="https://static.wikia.nocookie.net/gensin-impact/images/5/56/Dendrobium_Card_Back.png" />
+                </div>
+                <div class="card__face card__face--back"><img class="truc"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
