@@ -409,5 +409,23 @@ window.addEventListener("load", (event) => {
             }, 900);
         }
     }, { passive: true })
+    const start = document.getElementsByClassName("card");
+    setTimeout(() => {
+        for (let i = 0; i < start.length; i++) {
 
+            // Affecte l'url mélangée à la propriété src de chaque élément
+            start[i].classList.add("deg");
+            setTimeout(() => {
+                start[i].classList.remove("deg");
+                start[i].classList.add("degoff");
+                setTimeout(() => {
+                    start[i].classList.remove("degoff");
+                    setTimeout(() => {
+                        stop = 1;
+                    }, 900);
+
+                }, 130);
+            }, 1130);
+        }
+    }, 530);
 })
