@@ -1,5 +1,4 @@
 
-
 var help = document.querySelector('.card__face--back')
 //var socket = io();
 var envers = 1;
@@ -18,6 +17,10 @@ const array = [
     'https://genshin.honeyhunterworld.com/img/i_n330012_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330013_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330014_gcg_high_resolution.webp',
+    'https://genshin.honeyhunterworld.com/img/i_n330015_gcg_high_resolution.webp',
+    'https://genshin.honeyhunterworld.com/img/i_n330016_gcg_high_resolution.webp',
+    'https://genshin.honeyhunterworld.com/img/i_n330017_gcg_high_resolution.webp',
+    'https://genshin.honeyhunterworld.com/img/i_n330018_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330000_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330001_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330002_gcg_high_resolution.webp',
@@ -31,42 +34,14 @@ const array = [
     'https://genshin.honeyhunterworld.com/img/i_n330011_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330012_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330013_gcg_high_resolution.webp',
-    'https://genshin.honeyhunterworld.com/img/i_n330014_gcg_high_resolution.webp'
+    'https://genshin.honeyhunterworld.com/img/i_n330014_gcg_high_resolution.webp',
+    'https://genshin.honeyhunterworld.com/img/i_n330015_gcg_high_resolution.webp',
+    'https://genshin.honeyhunterworld.com/img/i_n330016_gcg_high_resolution.webp',
+    'https://genshin.honeyhunterworld.com/img/i_n330017_gcg_high_resolution.webp',
+    'https://genshin.honeyhunterworld.com/img/i_n330018_gcg_high_resolution.webp'
 
 ];
 window.addEventListener("load", (event) => {
-    document.querySelectorAll(".glow-button").forEach((button) => {
-        const gradientElem = document.createElement("div");
-        gradientElem.classList.add("gradient");
-    
-        button.appendChild(gradientElem);
-    
-        button.addEventListener("pointermove", (e) => {
-            const rect = button.getBoundingClientRect();
-    
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-    
-            gsap.to(button, {
-                "--pointer-x": `${x}px`,
-                "--pointer-y": `${y}px`,
-                duration: 0.6,
-            });
-    
-            gsap.to(button, {
-                "--button-glow": chroma
-                    .mix(
-                        getComputedStyle(button)
-                            .getPropertyValue("--button-glow-start")
-                            .trim(),
-                        getComputedStyle(button).getPropertyValue("--button-glow-end").trim(),
-                        x / rect.width
-                    )
-                    .hex(),
-                duration: 0.2,
-            });
-        });
-    });
     // Mélange les éléments de l'array de manière aléatoire
     function shuffle(arr) {
         for (let i = arr.length - 1; i > 0; i--) {
@@ -182,7 +157,7 @@ window.addEventListener("load", (event) => {
 
                             }
 
-                        }, 950);
+                        }, 500);
                         two = 1;
                     }
 
@@ -210,7 +185,7 @@ window.addEventListener("load", (event) => {
             console.log(envers);
             setTimeout(() => {
                 stop = 1;
-            }, 900);
+            }, 800);
         }
 
 
@@ -224,7 +199,7 @@ window.addEventListener("load", (event) => {
             if (isMobile()) {
                 points.style.left = "844px"
             } else {
-                points.style.left = "170px"
+                points.style.left = "125px"
             }
         }
         points.textContent = ++pts;
@@ -281,7 +256,7 @@ window.addEventListener("load", (event) => {
 
                             }
 
-                        }, 950);
+                        }, 500);
                         two = 1;
                     }
 
@@ -300,7 +275,7 @@ window.addEventListener("load", (event) => {
             }
             setTimeout(() => {
                 stop = 1;
-            }, 900);
+            }, 800);
         }
 
     }, { passive: true })
@@ -352,7 +327,7 @@ window.addEventListener("load", (event) => {
 
                             }
 
-                        }, 950);
+                        }, 500);
                         two = 1;
                     }
 
@@ -371,7 +346,7 @@ window.addEventListener("load", (event) => {
             }
             setTimeout(() => {
                 stop = 1;
-            }, 900);
+            }, 800);
         }
     }, { passive: true })
     document.querySelector(".scene4").addEventListener("click", e => {
@@ -421,7 +396,7 @@ window.addEventListener("load", (event) => {
 
                             }
 
-                        }, 950);
+                        }, 500);
                         two = 1;
                     }
 
@@ -439,7 +414,7 @@ window.addEventListener("load", (event) => {
             }
             setTimeout(() => {
                 stop = 1;
-            }, 900);
+            }, 800);
         }
     }, { passive: true })
     const start = document.getElementsByClassName("card");
@@ -455,10 +430,10 @@ window.addEventListener("load", (event) => {
                     start[i].classList.remove("degoff");
                     setTimeout(() => {
                         stop = 1;
-                    }, 900);
+                    }, 800);
 
                 }, 130);
-            }, 1130);
+            }, 930);
         }
-    }, 530);
+    }, 630);
 })

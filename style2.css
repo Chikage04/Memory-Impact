@@ -77,7 +77,7 @@
     position: relative;
     top: 20%;
     left: 40%;
-    transition: transform 0.8s;
+    transition: transform 0.45s;
     transition-timing-function: ease-out;
 }
 
@@ -111,7 +111,7 @@ body {
     cursor: pointer;
     margin-right: 15px;
     margin-top: 10px;
-    transition: 0.8s ease-in-out;
+    transition: 0.45s ease-in-out;
     transform-style: preserve-3d;
 }
 
@@ -139,7 +139,7 @@ body {
     height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    transition: 0.8s ease-in-out;
+    transition: 0.45s ease-in-out;
 
 }
 
@@ -167,7 +167,7 @@ body {
     grid-row-gap: 10px;
     position: absolute;
     top: 4%;
-    left: 25%;
+    left: 19%;
 }
 
 
@@ -177,7 +177,6 @@ body {
     position: absolute;
     image-rendering: -webkit-optimize-contrast;
     filter: contrast(1.1);
-    border-radius: 3px;
 }
 
 
@@ -188,20 +187,19 @@ body {
 .point {
     font-size: 70px;
     top: 60px;
-    left: 180px;
+    left: 140px;
     position: absolute;
-    transition: all 8s;
+    transition: all 10s;
     color: white;
 }
 
 #timer {
     font-size: 70px;
     top: 160px;
-    left: 110px;
+    left: 70px;
     position: absolute;
     color: white;
 }
-
 .glow-button:hover {
     transform: scale(1.15);
     transition: all 0.4s;
@@ -321,9 +319,6 @@ body:before {
     opacity: 0.5;
     
 }
-
-
-
 @media screen and (max-width: 1090px) {
     .parent {
         display: grid;
@@ -347,14 +342,14 @@ body:before {
         cursor: pointer;
         margin-right: 15px;
         margin-top: 10px;
-        transition: 0.8s ease-in-out;
+        transition: 0.45s ease-in-out;
         transform-style: preserve-3d;
     }
 
     .point {
         font-size: 140px;
         top: 450px;
-        left: 870px;
+        left: 840px;
         position: absolute;
     }
 
