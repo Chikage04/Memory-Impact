@@ -232,7 +232,7 @@ body {
     z-index: 1;
     box-shadow: 0 1px 20px var(--button-shadow);
     top: 10%;
-    left: 80%;
+    left: 86%;
 }
 
 .glow-button .gradient {
