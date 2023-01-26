@@ -206,7 +206,7 @@ window.addEventListener("load", (event) => {
                     dos.classList.add("sombre2");
                     t.classList.add("sombre");
 
-                }, 500);
+                }, 550);
                 closest.classList.remove("degoff");
                 if (two == 2) {
 
@@ -266,7 +266,7 @@ window.addEventListener("load", (event) => {
             console.log(envers);
             setTimeout(() => {
                 stop = 1;
-            }, 800);
+            }, 750);
         }
 
 
@@ -336,7 +336,7 @@ window.addEventListener("load", (event) => {
                     dos.classList.add("sombre2");
                     t.classList.add("sombre");
 
-                }, 500);
+                }, 550);
                 
                 if (two == 2) {
 
@@ -388,7 +388,7 @@ window.addEventListener("load", (event) => {
             }
             setTimeout(() => {
                 stop = 1;
-            }, 800);
+            }, 750);
         }
 
     }, { passive: true })
@@ -434,7 +434,7 @@ window.addEventListener("load", (event) => {
                     dos.classList.add("sombre2");
                     t.classList.add("sombre");
 
-                }, 500);
+                }, 550);
                 if (two == 2) {
 
                     envers = 1;
@@ -485,7 +485,7 @@ window.addEventListener("load", (event) => {
             }
             setTimeout(() => {
                 stop = 1;
-            }, 800);
+            }, 750);
         }
     }, { passive: true })
     document.querySelector(".scene4").addEventListener("click", e => {
@@ -529,7 +529,7 @@ window.addEventListener("load", (event) => {
                     dos.classList.add("sombre2");
                     t.classList.add("sombre");
 
-                }, 500);
+                }, 550);
                 if (two == 2) {
 
                     envers = 1;
@@ -579,7 +579,7 @@ window.addEventListener("load", (event) => {
             }
             setTimeout(() => {
                 stop = 1;
-            }, 800);
+            }, 750);
         }
     }, { passive: true })
     const start = document.getElementsByClassName("card");
@@ -595,10 +595,10 @@ window.addEventListener("load", (event) => {
                     start[i].classList.remove("degoff");
                     setTimeout(() => {
                         stop = 1;
-                    }, 800);
+                    }, 750);
 
                 }, 130);
             }, 630);
         }
-    }, 630);
+    }, 930);
 })
