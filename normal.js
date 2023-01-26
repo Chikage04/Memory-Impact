@@ -182,7 +182,7 @@ window.addEventListener("load", (event) => {
 
                             }
 
-                        }, 950);
+                        }, 700);
                         two = 1;
                     }
 
@@ -210,7 +210,7 @@ window.addEventListener("load", (event) => {
             console.log(envers);
             setTimeout(() => {
                 stop = 1;
-            }, 900);
+            }, 600);
         }
 
 
@@ -281,7 +281,7 @@ window.addEventListener("load", (event) => {
 
                             }
 
-                        }, 950);
+                        }, 700);
                         two = 1;
                     }
 
@@ -300,7 +300,7 @@ window.addEventListener("load", (event) => {
             }
             setTimeout(() => {
                 stop = 1;
-            }, 900);
+            }, 600);
         }
 
     }, { passive: true })
@@ -352,7 +352,7 @@ window.addEventListener("load", (event) => {
 
                             }
 
-                        }, 950);
+                        }, 700);
                         two = 1;
                     }
 
@@ -371,7 +371,7 @@ window.addEventListener("load", (event) => {
             }
             setTimeout(() => {
                 stop = 1;
-            }, 900);
+            }, 600);
         }
     }, { passive: true })
     document.querySelector(".scene4").addEventListener("click", e => {
@@ -421,7 +421,7 @@ window.addEventListener("load", (event) => {
 
                             }
 
-                        }, 950);
+                        }, 700);
                         two = 1;
                     }
 
@@ -439,7 +439,7 @@ window.addEventListener("load", (event) => {
             }
             setTimeout(() => {
                 stop = 1;
-            }, 900);
+            }, 600);
         }
     }, { passive: true })
     const start = document.getElementsByClassName("card");
@@ -455,7 +455,7 @@ window.addEventListener("load", (event) => {
                     start[i].classList.remove("degoff");
                     setTimeout(() => {
                         stop = 1;
-                    }, 900);
+                    }, 600);
 
                 }, 130);
             }, 1130);
