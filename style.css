@@ -187,7 +187,7 @@ body {
 
 .point {
     font-size: 70px;
-    top: 60px;
+    top: 160px;
     left: 180px;
     position: absolute;
     transition: all 8s;
@@ -196,7 +196,7 @@ body {
 
 #timer {
     font-size: 70px;
-    top: 160px;
+    top: 260px;
     left: 110px;
     position: absolute;
     color: white;
