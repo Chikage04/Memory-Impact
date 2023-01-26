@@ -255,7 +255,7 @@ ul.main-menu li a {
 }
 
 ul.main-menu li a.active {
-    background: #4e91c9;
+    background: #0d4dac;
     color: #fff;
 }
 
@@ -301,6 +301,7 @@ ul.main-menu li a.active {
     -webkit-animation-delay: 0.5s;
     animation-delay: 0.5s;
     font-weight: 400;
+    text-align: justify;
 }
 
 h2.welcome-title {
@@ -1104,11 +1105,11 @@ span[class*="border-"] {
 }
 .msg {
     font-family: 'Baloo 2', cursive;
-    font-size: 42px;
+    font-size: 36px;
     top: 15%;
     text-align: center;
     position: absolute;
     color: white;
-    width: 90%;
-    left: 5%;
+    width: 78%;
+    left: 11%;
 }
