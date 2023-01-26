@@ -186,7 +186,15 @@ window.addEventListener("load", (event) => {
                 var t = document.getElementsByClassName("card deg");
 
                 if (t[1] !== null && t[1] !== undefined) {
-                    t = t[1];
+                    tc = t[1];
+                    tc = tc.querySelector(".truc");
+                    if(tc.classList == "truc sombre"){
+                        t = t[0];
+                        console.log("t1")
+                    } else{
+                        t = t[1];
+                        console.log("t0")
+                    }
                 } else {
                     t = t[0];
                 }
@@ -306,9 +314,19 @@ window.addEventListener("load", (event) => {
                 var t = document.getElementsByClassName("card deg");
 
                 if (t[1] !== null && t[1] !== undefined) {
-                    t = t[1];
+                    tc = t[1];
+                    tc = tc.querySelector(".truc");
+                    if(tc.classList == "truc sombre"){
+                        t = t[0];
+                        console.log("t1")
+                    } else{
+                        t = t[1];
+                        console.log("t0")
+                    }
+                    
                 } else {
                     t = t[0];
+                    console.log("t0000")
                 }
 
                 t = t.querySelector(".truc");
@@ -394,9 +412,19 @@ window.addEventListener("load", (event) => {
                 var t = document.getElementsByClassName("card deg");
 
                 if (t[1] !== null && t[1] !== undefined) {
-                    t = t[1];
+                    tc = t[1];
+                    tc = tc.querySelector(".truc");
+                    if(tc.classList == "truc sombre"){
+                        t = t[0];
+                        console.log("t1")
+                    } else{
+                        t = t[1];
+                        console.log("t0")
+                    }
+                    
                 } else {
                     t = t[0];
+                    console.log("t0000")
                 }
 
                 t = t.querySelector(".truc");
@@ -479,9 +507,19 @@ window.addEventListener("load", (event) => {
                 var t = document.getElementsByClassName("card deg");
 
                 if (t[1] !== null && t[1] !== undefined) {
-                    t = t[1];
+                    tc = t[1];
+                    tc = tc.querySelector(".truc");
+                    if(tc.classList == "truc sombre"){
+                        t = t[0];
+                        console.log("t1")
+                    } else{
+                        t = t[1];
+                        console.log("t0")
+                    }
+                    
                 } else {
                     t = t[0];
+                    console.log("t0000")
                 }
 
                 t = t.querySelector(".truc");
