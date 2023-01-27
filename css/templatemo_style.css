@@ -249,9 +249,9 @@ ul.main-menu li {
 }
 
 ul.main-menu li a {
-    padding: 10px 15px;
+    padding: 18px 23px;
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 17px;
 }
 
 ul.main-menu li a.active {
@@ -361,20 +361,7 @@ h2.welcome-title {
     animation-delay: 0.5s;
 }
 
-.project-item {
-    margin-bottom: 30px;
-    position: relative;
-    overflow: hidden;
-    border: 3px solid #1a1c1f;
-    -moz-backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-}
 
-.project-item img {
-    width: 100%;
-    display: block;
-}
 
 .overlay {
     position: absolute;
@@ -414,37 +401,7 @@ h2.welcome-title {
     transform: rotate(0);
 }
 
-.project-item.one {
-    -moz-animation-delay: 0.5s;
-    -webkit-animation-delay: 0.5s;
-    animation-delay: 0.5s;
-    height: 188px;
-    background: radial-gradient(circle, rgba(25,5,59,1) 0%, rgba(1,15,32,1) 100%);
-}
 
-.project-item.two {
-    -moz-animation-delay: 1s;
-    -webkit-animation-delay: 1s;
-    animation-delay: 1s;
-    height: 188px;
-    background: radial-gradient(circle, rgba(25,5,59,1) 0%, rgba(1,15,32,1) 100%);
-}
-
-.project-item.three {
-    -moz-animation-delay: 1.5s;
-    -webkit-animation-delay: 1.5s;
-    animation-delay: 1.5s;
-    height: 188px;
-    background: radial-gradient(circle, rgba(25,5,59,1) 0%, rgba(1,15,32,1) 100%);
-}
-
-.project-item.four {
-    -moz-animation-delay: 2s;
-    -webkit-animation-delay: 2s;
-    animation-delay: 2s;
-    height: 188px;
-    background: radial-gradient(circle, rgba(25,5,59,1) 0%, rgba(1,15,32,1) 100%);
-}
 
 .our-story {
     padding: 0 50px;
@@ -1022,6 +979,13 @@ a {
     -ms-transition: all 100ms ease-in-out;
     -o-transition: all 100ms ease-in-out;
     transition: all 100ms ease-in-out;
+    
+}
+.vasy {
+   
+    height: 100%;
+    width: 100%;
+    display: grid;
 }
 
 a:hover {
@@ -1083,7 +1047,7 @@ span[class*="border-"] {
 .main-button,
 .main-footer .social li a {
     color: #fff;
-    text-transform: uppercase;
+   
     font-size: 12px;
     padding: 10px 15px;
     display: inline-block;
@@ -1113,3 +1077,63 @@ span[class*="border-"] {
     width: 78%;
     left: 11%;
 }
+
+
+
+/* CSS */
+.button-64 {
+    align-items: center;
+    background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 140px;
+    padding: 3px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+    height: 188px;
+    margin-bottom: 52px;
+  }
+  
+  .button-64:active,
+  .button-64:hover {
+    outline: 0;
+  }
+  
+  .button-64 span {
+    background-color: rgb(5, 6, 45);
+    padding: 16px 24px;
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    transition: 400ms;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    font-family: 'Contrail One';
+    font-size: 30px;
+  }
+  
+  .button-64:hover span {
+    background: none;
+  }
+  
+  @media (min-width: 768px) {
+    .button-64 {
+      font-size: 24px;
+      min-width: 196px;
+    }
+  }
