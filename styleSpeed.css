@@ -328,6 +328,7 @@ body:before {
     position: absolute;
 }
 
+
 @media screen and (max-width: 1090px) {
     .parent {
         display: grid;

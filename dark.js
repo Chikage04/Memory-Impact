@@ -130,7 +130,21 @@ window.addEventListener("load", (event) => {
                         temps = temps < 0 ? 0 : temps + 1
                     }
                 }, 1000)
+                setTimeout(() => {
+                    setInterval(() => {
+                        let beurk = document.getElementsByClassName("degend");
+                        beurk = beurk.length;
+                        if (beurk == 28) {
+                            var end = document.querySelector(".end")
+                            end.style.display = "unset"
+                            setTimeout(() => {
+                                end.classList.add("endA");
+                            }, 150);
+                        }
 
+
+                    }, 130);
+                }, 2000);
 
             }
         }
@@ -253,6 +267,13 @@ window.addEventListener("load", (event) => {
                     console.log("two plus 1");
                     //console.log(two);
                 }
+                setTimeout(() => {
+                    stop = 1;
+                }, 675);
+            } else{
+                setTimeout(() => {
+                    stop = 1;
+                }, 75);
             }
 
 
@@ -264,9 +285,7 @@ window.addEventListener("load", (event) => {
 
 
             console.log(envers);
-            setTimeout(() => {
-                stop = 1;
-            }, 750);
+            
         }
 
 
@@ -380,15 +399,20 @@ window.addEventListener("load", (event) => {
                     console.log("two plus 1");
                     //console.log(two);
                 }
+                setTimeout(() => {
+                    stop = 1;
+                }, 675);
+            } else{
+                setTimeout(() => {
+                    stop = 1;
+                }, 75);
             }
             var bug = document.querySelector(".card.deg.degoff");
             if (bug !== null) {
                 bug.classList.remove("deg");
                 bug.classList.remove("degoff");
             }
-            setTimeout(() => {
-                stop = 1;
-            }, 750);
+            
         }
 
     }, { passive: true })
@@ -477,15 +501,20 @@ window.addEventListener("load", (event) => {
                     console.log("two plus 1");
                     //console.log(two);
                 }
+                setTimeout(() => {
+                    stop = 1;
+                }, 675);
+            } else{
+                setTimeout(() => {
+                    stop = 1;
+                }, 75);
             }
 
             var bug = document.querySelector(".card.deg.degoff");
             if (bug !== null) {
                 bug.classList.remove("deg");
             }
-            setTimeout(() => {
-                stop = 1;
-            }, 750);
+           
         }
     }, { passive: true })
     document.querySelector(".scene4").addEventListener("click", e => {
@@ -572,14 +601,19 @@ window.addEventListener("load", (event) => {
                     console.log("two plus 1");
                     //console.log(two);
                 }
+                setTimeout(() => {
+                    stop = 1;
+                }, 675);
+            } else{
+                setTimeout(() => {
+                    stop = 1;
+                }, 75);
             }
             var bug = document.querySelector(".card.deg.degoff");
             if (bug !== null) {
                 bug.classList.remove("deg");
             }
-            setTimeout(() => {
-                stop = 1;
-            }, 750);
+            
         }
     }, { passive: true })
     const start = document.getElementsByClassName("card");

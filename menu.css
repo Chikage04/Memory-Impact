@@ -1,0 +1,45 @@
+.end {
+    z-index: 999;
+    position: absolute;
+    top: 17%;
+    left: 22%;
+    background-color: rgba(5, 1, 32, 0.914);
+    width: 850px;
+    height: 500px;
+    display: none;
+    border-radius: 10%;
+    opacity: 0;
+    transform: scale(0.001);
+    transition: all 1s ease-in;
+    border: thick double #edff00;
+    border-style: dashed double dashed;
+    border-width: 6px;
+    filter: brightness(1.3);
+}
+.endA{
+    transform: scale(1);
+    opacity: 1;
+}
+
+#ending {
+    position: relative;
+    font-size: 32px;
+    color: white;
+    width: 55%;
+    top: 120px;
+    left: 188px;
+    text-align: center;
+
+}
+
+#fin {
+    position: absolute;
+    top: 65%;
+    --button-shine-left: rgba(245, 8, 0, 0.981);
+    --button-shine-right: rgba(255, 221, 0, 0.996);
+    left: 40%;
+    transform: scale(1.4);
+}
+#fin:hover{
+    transform: scale(1.5);
+}

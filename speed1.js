@@ -114,8 +114,9 @@ window.addEventListener("load", (event) => {
                 fini = fini.length;
 
 
-                let temps = 1
+                let temps = 5
                 const timerElement = document.getElementById("timer")
+                
                 setInterval(() => {
                     if (fini < 28) {
                         fini = document.getElementsByClassName("degend");
@@ -127,24 +128,27 @@ window.addEventListener("load", (event) => {
                         secondes = secondes < 10 ? "0" + secondes : secondes
 
                         timerElement.innerText = `${minutes}:${secondes}`
-                        temps = temps < 0 ? 0 : temps + 1
+                        temps = temps <= 0 ? 0 : temps - 1
+                        
                     }
                 }, 1000)
-                setTimeout(() => {
-                    setInterval(() => {
-                        let beurk = document.getElementsByClassName("degend");
-                        beurk = beurk.length;
-                        if (beurk == 28) {
+                setInterval(() => {
+                    if(temps == 0){
+                        setTimeout(() => {
+                            stop = 2;
                             var end = document.querySelector(".end")
                             end.style.display = "unset"
                             setTimeout(() => {
                                 end.classList.add("endA");
-                            }, 150);
-                        }
+                            }, 500); 
+                        }, 400);
+                        
+                        
+                        
+                    }
+                }, 200);
+                
 
-
-                    }, 130);
-                }, 2000);
 
             }
         }
@@ -250,7 +254,7 @@ window.addEventListener("load", (event) => {
             if (isMobile()) {
                 points.style.left = "844px"
             } else {
-                points.style.left = "125px"
+                points.style.left = "170px"
             }
         }
         points.textContent = ++pts;
@@ -331,7 +335,7 @@ window.addEventListener("load", (event) => {
                 bug.classList.remove("deg");
                 bug.classList.remove("degoff");
             }
-            
+           
         }
 
     }, { passive: true })
@@ -402,11 +406,12 @@ window.addEventListener("load", (event) => {
                     stop = 1;
                 }, 75);
             }
+
             var bug = document.querySelector(".card.deg.degoff");
             if (bug !== null) {
                 bug.classList.remove("deg");
             }
-            
+           
         }
     }, { passive: true })
     document.querySelector(".scene4").addEventListener("click", e => {
@@ -479,7 +484,7 @@ window.addEventListener("load", (event) => {
             if (bug !== null) {
                 bug.classList.remove("deg");
             }
-            
+           
         }
     }, { passive: true })
     const start = document.getElementsByClassName("card");
@@ -495,7 +500,7 @@ window.addEventListener("load", (event) => {
                     start[i].classList.remove("degoff");
                     setTimeout(() => {
                         stop = 1;
-                    }, 800);
+                    }, 675);
 
                 }, 130);
             }, 930);
