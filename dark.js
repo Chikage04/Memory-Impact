@@ -296,9 +296,7 @@ window.addEventListener("load", (event) => {
         if (pts >= 9) {
             if (isMobile()) {
                 points.style.left = "844px"
-            } else {
-                points.style.left = "125px"
-            }
+            } 
         }
         points.textContent = ++pts;
     }
