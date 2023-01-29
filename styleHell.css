@@ -323,7 +323,7 @@ body:before {
     content: "";
     position: absolute;
     inset: 0% -60% 0 -60%;
-    background-image: radial-gradient(ellipse at center, #07136e 0%, #020112 55%);
+    background-image: radial-gradient(ellipse at center, #480000 0%, #020112 55%);
     opacity: 0.5;
     
 }
