@@ -21,6 +21,8 @@ const array = [
     'https://genshin.honeyhunterworld.com/img/i_n330016_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330017_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330018_gcg_high_resolution.webp',
+    'https://genshin.honeyhunterworld.com/img/i_n330028_gcg_high_resolution.webp',
+    'https://genshin.honeyhunterworld.com/img/i_n330020_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330000_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330001_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330002_gcg_high_resolution.webp',
@@ -38,28 +40,30 @@ const array = [
     'https://genshin.honeyhunterworld.com/img/i_n330015_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330016_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330017_gcg_high_resolution.webp',
-    'https://genshin.honeyhunterworld.com/img/i_n330018_gcg_high_resolution.webp'
+    'https://genshin.honeyhunterworld.com/img/i_n330018_gcg_high_resolution.webp',
+    'https://genshin.honeyhunterworld.com/img/i_n330028_gcg_high_resolution.webp',
+    'https://genshin.honeyhunterworld.com/img/i_n330020_gcg_high_resolution.webp'
 
 ];
 window.addEventListener("load", (event) => {
     document.querySelectorAll(".glow-button").forEach((button) => {
         const gradientElem = document.createElement("div");
         gradientElem.classList.add("gradient");
-    
+
         button.appendChild(gradientElem);
-    
+
         button.addEventListener("pointermove", (e) => {
             const rect = button.getBoundingClientRect();
-    
+
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-    
+
             gsap.to(button, {
                 "--pointer-x": `${x}px`,
                 "--pointer-y": `${y}px`,
                 duration: 0.6,
             });
-    
+
             gsap.to(button, {
                 "--button-glow": chroma
                     .mix(
@@ -104,21 +108,22 @@ function myFunction() {
 var stop = 2;
 var compte = 2;
 var ok = 1;
+var fini;
 window.addEventListener("load", (event) => {
 
     function comptes(np) {
         if (ok == 1) {
             ok = 2;
             if (compte == 1) {
-                var fini = document.getElementsByClassName("degend");
+               fini = document.getElementsByClassName("degend");
                 fini = fini.length;
 
 
-                let temps = 59
+                let temps = 119
                 const timerElement = document.getElementById("timer")
-                
+
                 setInterval(() => {
-                    if (fini < 28) {
+                    if (fini < 40) {
                         fini = document.getElementsByClassName("degend");
                         fini = fini.length;
                         let minutes = parseInt(temps / 60, 10)
@@ -129,25 +134,23 @@ window.addEventListener("load", (event) => {
 
                         timerElement.innerText = `${minutes}:${secondes}`
                         temps = temps <= 0 ? 0 : temps - 1
-                        
+
                     }
                 }, 1000)
                 setInterval(() => {
-                    if(temps == 0){
+                    if (temps == 0) {
                         setTimeout(() => {
                             stop = 2;
                             var end = document.querySelector(".end")
                             end.style.display = "unset"
                             setTimeout(() => {
                                 end.classList.add("endA");
-                            }, 500); 
+                            }, 500);
                         }, 400);
-                        
-                        
-                        
                     }
                 }, 200);
                 
+
 
 
             }
@@ -222,7 +225,7 @@ window.addEventListener("load", (event) => {
                 setTimeout(() => {
                     stop = 1;
                 }, 675);
-            } else{
+            } else {
                 setTimeout(() => {
                     stop = 1;
                 }, 75);
@@ -240,7 +243,7 @@ window.addEventListener("load", (event) => {
                 bug.classList.remove("deg");
             }
             console.log(envers);
-            
+
         }
 
 
@@ -255,10 +258,35 @@ window.addEventListener("load", (event) => {
                 points.style.left = "844px"
             }
         }
-        points.textContent = ++pts;
+        if (points.textContent == 0)return
+        points.textContent = pts - 1
+    }   
+
+           
+function fin() {
+    setInterval(() => {
+        stop = 2;
+        fini = 42;
+    }, 10);
+}
+setInterval(() => {
+    var points = document.querySelector(".point");
+    var pts = +points.textContent;
+
+    if (points.textContent == 0){
+        fin()
+        
+        var end = document.querySelector(".end")
+            end.style.display = "unset"
+            setTimeout(() => {
+                end.classList.add("endA");
+            }, 500);
+        setTimeout(() => {
+                    
+        }, 100000);
     }
 
-
+}, 100);
 
     document.querySelector(".scene2").addEventListener("click", e => {
         if (stop == 1) {
@@ -323,7 +351,7 @@ window.addEventListener("load", (event) => {
                 setTimeout(() => {
                     stop = 1;
                 }, 675);
-            } else{
+            } else {
                 setTimeout(() => {
                     stop = 1;
                 }, 75);
@@ -333,7 +361,7 @@ window.addEventListener("load", (event) => {
                 bug.classList.remove("deg");
                 bug.classList.remove("degoff");
             }
-           
+
         }
 
     }, { passive: true })
@@ -399,7 +427,7 @@ window.addEventListener("load", (event) => {
                 setTimeout(() => {
                     stop = 1;
                 }, 675);
-            } else{
+            } else {
                 setTimeout(() => {
                     stop = 1;
                 }, 75);
@@ -409,7 +437,7 @@ window.addEventListener("load", (event) => {
             if (bug !== null) {
                 bug.classList.remove("deg");
             }
-           
+
         }
     }, { passive: true })
     document.querySelector(".scene4").addEventListener("click", e => {
@@ -473,7 +501,7 @@ window.addEventListener("load", (event) => {
                 setTimeout(() => {
                     stop = 1;
                 }, 675);
-            } else{
+            } else {
                 setTimeout(() => {
                     stop = 1;
                 }, 75);
@@ -482,7 +510,7 @@ window.addEventListener("load", (event) => {
             if (bug !== null) {
                 bug.classList.remove("deg");
             }
-           
+
         }
     }, { passive: true })
     const start = document.getElementsByClassName("card");

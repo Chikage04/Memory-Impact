@@ -359,6 +359,7 @@ h2.welcome-title {
     -moz-animation-delay: 0.5s;
     -webkit-animation-delay: 0.5s;
     animation-delay: 0.5s;
+    height: 700px;
 }
 
 
@@ -1079,11 +1080,14 @@ span[class*="border-"] {
 }
 
 
-
+#millieu{
+    left: 25%!important;
+    
+}
 /* CSS */
 .button-64 {
     align-items: center;
-    background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+    background-image: linear-gradient(144deg,#AF40FF, #523aef 50%,#dd0336);
     border: 0;
     border-radius: 8px;
     box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
@@ -1125,6 +1129,7 @@ span[class*="border-"] {
     align-items: center;
     font-family: 'Contrail One';
     font-size: 30px;
+    line-height: 31px;
   }
   
   .button-64:hover span {

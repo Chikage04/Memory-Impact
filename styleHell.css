@@ -81,11 +81,6 @@
     transition-timing-function: ease-out;
 }
 
-.sombre {
-    filter: brightness(0) !important;
-}
-
-
 body {
 
     justify-content: center;
@@ -94,7 +89,6 @@ body {
     background: black;
     overflow-x: hidden;
 }
-
 
 .scene,
 .scene2,
@@ -173,16 +167,22 @@ body {
     grid-row-gap: 10px;
     position: absolute;
     top: 4%;
-    left: 19%;
+    left: 18%;
 }
 
-
+.info{
+    left: 9%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+}
 
 .parent img {
     width: 50%;
     position: absolute;
     image-rendering: -webkit-optimize-contrast;
     filter: contrast(1.1);
+    border-radius: 3px;
 }
 
 
@@ -194,13 +194,13 @@ body {
     font-size: 70px;
     top: 160px;
     position: absolute;
-    transition: all 10s;
+    transition: all 8s;
     color: white;
 }
 
 #timer {
     font-size: 70px;
-    top: 260px;
+    top: 260px; 
     position: absolute;
     color: white;
 }
@@ -240,7 +240,6 @@ body {
     left: 86%;
 }
 
-
 .glow-button .gradient {
     position: absolute;
     inset: 0;
@@ -271,15 +270,11 @@ body {
     position: relative;
     display: block;
     padding: 11px 0;
-    width: 155px;
+    width: 162px;
     border-radius: inherit;
     background-color: var(--button-background);
     overflow: hidden;
 
-}
-
-.glow2 {
-    width: 163px !important;
 }
 
 .glow-button span:before {
@@ -315,7 +310,7 @@ body {
 }
 
 html {
-
+   
     -webkit-font-smoothing: antialiased;
 }
 
@@ -327,29 +322,15 @@ body:before {
     inset: 0% -60% 0 -60%;
     background-image: radial-gradient(ellipse at center, #07136e 0%, #020112 55%);
     opacity: 0.5;
-
+    
 }
 
-.sombre2 {
-    box-shadow: 0px 0px 1px 1px rgb(255 255 255);
-    filter: brightness(6.5);
-    border-radius: 6px;
-    height: 99%;
-    top: 1px;
-}
-
-#menu {
+#menu{
     top: 8%;
-    left: 5%;
+    left: 60px;
     position: absolute;
 }
 
-.info {
-    left: 10%;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-}
 
 @media screen and (max-width: 1090px) {
     .parent {
@@ -381,7 +362,7 @@ body:before {
     .point {
         font-size: 140px;
         top: 450px;
-        left: 840px;
+        left: 870px;
         position: absolute;
     }
 

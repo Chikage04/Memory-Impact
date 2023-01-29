@@ -90,7 +90,7 @@ body {
     align-items: center;
     height: 100vh;
     background: black;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .scene,
@@ -190,7 +190,6 @@ body {
 .point {
     font-size: 70px;
     top: 160px;
-    left: 140px;
     position: absolute;
     transition: all 10s;
     color: white;
@@ -199,7 +198,6 @@ body {
 #timer {
     font-size: 70px;
     top: 260px;
-    left: 70px;
     position: absolute;
     color: white;
 }
@@ -268,11 +266,14 @@ body {
     position: relative;
     display: block;
     padding: 11px 0;
-    width: 162px;
+    width: 155px;
     border-radius: inherit;
     background-color: var(--button-background);
     overflow: hidden;
 
+}
+.glow2{
+    width: 163px!important;
 }
 
 .glow-button span:before {
@@ -326,6 +327,12 @@ body:before {
     top: 8%;
     left: 5%;
     position: absolute;
+}
+.info{
+    left: 10%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
 }
 @media screen and (max-width: 1090px) {
     .parent {

@@ -87,7 +87,7 @@ body {
     align-items: center;
     height: 100vh;
     background: black;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .scene,
@@ -188,7 +188,6 @@ body {
 .point {
     font-size: 70px;
     top: 160px;
-    left: 180px;
     position: absolute;
     transition: all 8s;
     color: white;
@@ -197,7 +196,6 @@ body {
 #timer {
     font-size: 70px;
     top: 260px;
-    left: 110px;
     position: absolute;
     color: white;
 }
@@ -293,7 +291,12 @@ body {
     --button-glow-opacity: 1;
     --button-glow-duration: .25s;
 }
-
+.info{
+    left: 13%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+}
 @-webkit-keyframes rotate {
     to {
         transform: scale(1.05) translateY(-44px) rotate(360deg) translateZ(0);
