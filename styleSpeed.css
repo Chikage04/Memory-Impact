@@ -272,7 +272,7 @@ body {
 
 }
 .glow2{
-    width: 163px;
+    width: 163px!important;
 }
 
 .glow-button span:before {
