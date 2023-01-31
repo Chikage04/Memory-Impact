@@ -1,4 +1,4 @@
-.end {
+.end, .end2 {
     z-index: 999;
     position: absolute;
     top: 17%;
@@ -26,20 +26,40 @@
     font-size: 32px;
     color: white;
     width: 55%;
-    top: 120px;
+    top: 80px;
     left: 188px;
     text-align: center;
 
 }
+#ending2{
+    position: relative;
+    font-size: 32px;
+    color: white;
+    width: 55%;
+    left: 188px;
+    text-align: center;
+    top: 120px;
+}
 
 #fin {
     position: absolute;
-    top: 65%;
+    top: 75%;
     --button-shine-left: rgba(245, 8, 0, 0.981);
     --button-shine-right: rgba(255, 221, 0, 0.996);
     left: 40%;
     transform: scale(1.4);
 }
+#fin2{
+    position: absolute;
+    --button-shine-left: rgba(245, 8, 0, 0.981);
+    --button-shine-right: rgba(255, 221, 0, 0.996);
+    left: 40%;
+    transform: scale(1.4);
+    top: 65%;
+}
 #fin:hover{
+    transform: scale(1.5);
+}
+#fin2:hover{
     transform: scale(1.5);
 }

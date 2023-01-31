@@ -271,8 +271,9 @@ body {
     overflow: hidden;
 
 }
-.glow2{
-    width: 163px!important;
+
+.glow2 {
+    width: 163px !important;
 }
 
 .glow-button span:before {
@@ -294,12 +295,14 @@ body {
     --button-glow-opacity: 1;
     --button-glow-duration: .25s;
 }
-.info{
+
+.info {
     left: 13%;
     position: absolute;
     display: flex;
     justify-content: center;
 }
+
 @-webkit-keyframes rotate {
     to {
         transform: scale(1.05) translateY(-44px) rotate(360deg) translateZ(0);
@@ -313,7 +316,7 @@ body {
 }
 
 html {
-   
+
     -webkit-font-smoothing: antialiased;
 }
 
@@ -325,10 +328,10 @@ body:before {
     inset: 0% -60% 0 -60%;
     background-image: radial-gradient(ellipse at center, #050580 0%, #020112 55%);
     opacity: 0.5;
-    
+
 }
 
-#menu{
+#menu {
     top: 8%;
     left: 120px;
     position: absolute;
@@ -373,5 +376,34 @@ body:before {
         top: 450px;
         left: 110px;
         position: absolute;
+    }
+}
+
+@media screen and (min-width: 2000px) {
+
+    .scene .card,
+    .scene2 .card,
+    .scene3 .card,
+    .scene4 .card {
+        width: 105px;
+        height: 176px;
+    }
+
+    .parent {
+        top: 6%;
+    }
+
+    .end {
+        top: 19%;
+        left: 23%;
+        background-color: rgba(5, 1, 32, 0.914);
+        width: 900px;
+        height: 540px;
+    }
+    .glow-button{
+        left: 76%;
+    }
+    #menu{
+        left: 9%;
     }
 }

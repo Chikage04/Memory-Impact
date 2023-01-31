@@ -375,3 +375,31 @@ body:before {
         position: absolute;
     }
 }
+@media screen and (min-width: 2000px) {
+
+    .scene .card,
+    .scene2 .card,
+    .scene3 .card,
+    .scene4 .card {
+        width: 105px;
+        height: 176px;
+    }
+
+    .parent {
+        top: 6%;
+    }
+
+    .end {
+        top: 19%;
+        left: 23%;
+        background-color: rgba(5, 1, 32, 0.914);
+        width: 900px;
+        height: 540px;
+    }
+    .glow-button{
+        left: 76%;
+    }
+    #menu{
+        left: 6%;
+    }
+}

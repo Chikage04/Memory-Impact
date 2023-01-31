@@ -119,9 +119,8 @@ window.addEventListener("load", (event) => {
                 fini = fini.length;
 
 
-                let temps = 109
+                let temps = 119
                 const timerElement = document.getElementById("timer")
-
                 setInterval(() => {
                     if (fini < 40) {
                         fini = document.getElementsByClassName("degend");
@@ -141,7 +140,7 @@ window.addEventListener("load", (event) => {
                     if (temps == 0) {
                         setTimeout(() => {
                             stop = 2;
-                            var end = document.querySelector(".end")
+                            var end = document.querySelector(".end2")
                             end.style.display = "unset"
                             setTimeout(() => {
                                 end.classList.add("endA");
@@ -150,7 +149,21 @@ window.addEventListener("load", (event) => {
                     }
                 }, 200);
                 
+                setTimeout(() => {
+                    setInterval(() => {
+                        let beurk = document.getElementsByClassName("degend");
+                        beurk = beurk.length;
+                        if (beurk == 40) {
+                            var end = document.querySelector(".end")
+                            end.style.display = "unset"
+                            setTimeout(() => {
+                                end.classList.add("endA");
+                            }, 150);
+                        }
 
+
+                    }, 130);
+                }, 2000);
 
 
             }
@@ -201,6 +214,7 @@ window.addEventListener("load", (event) => {
                                 rep2.classList.add("degend");
                             } else {
                                 // Boucle sur les éléments récupérés
+                               
                                 for (let i = 0; i < rep.length; i++) {
                                     // Affecte l'url mélangée à la propriété src de chaque élément
                                     rep[i].classList.remove("deg");
@@ -529,7 +543,7 @@ setInterval(() => {
                     }, 675);
 
                 }, 130);
-            }, 1230);
+            }, 1130);
         }
-    }, 630);
+    }, 730);
 })
