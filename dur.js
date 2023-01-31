@@ -117,7 +117,7 @@ window.addEventListener("load", (event) => {
                 let temps = 1
                 const timerElement = document.getElementById("timer")
                 setInterval(() => {
-                    if (fini < 28) {
+                    if (fini < 36) {
                         fini = document.getElementsByClassName("degend");
                         fini = fini.length;
                         let minutes = parseInt(temps / 60, 10)
