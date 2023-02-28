@@ -58,39 +58,40 @@
         var submit = document.querySelector("#submit");
         var messagesList = document.getElementById('messages-list');
         var stop = 0;
-        setInterval(() => {
+        
+            setInterval(() => {
             if (stop == 0) {
                 var user2 = auth.currentUser;
                 if (user2) {
+                    stop = 1;
                     var email = user2.email;
                     const li = document.createElement('h2');
                     li.textContent = "Connecté";
                     verif.appendChild(li);
                     formulaire.style.display = 'none'
-                    stop = 1;
                     const usersRef = ref(database, 'users');
                     const dbRef = ref(getDatabase());
                     var pseudoL = [];
                     get(child(dbRef, `users/`)).then((snapshot) => {
                         if (snapshot.exists()) {
-                            console.log("snapshot exit", pseudoG)
+                           // console.log("snapshot exit", pseudoG)
                             snapshot.forEach((childSnapshot) => {
                                 // Récupération des données du message
                                 var ps = childSnapshot.val();
-                                console.log("c'est ps.email", ps.email)
-                                console.log("c'est email", ps.email)
+                                //console.log("c'est ps.email", ps.email)
+                               // console.log("c'est email", ps.email)
                                 // Ajout du message au tableau
                                 if (ps.email === email) {
                                     pseudoG = ps.pseudo;
                                     console.log("c'est son speudo", pseudoG)
 
                                 }
-                                console.log("pas de pseudo", pseudoG)
+                              //  console.log("pas de pseudo", pseudoG)
                                 pseudoL.push(ps);
                                 //messages = messages.map(i => Number(i));
                             });
 
-                            console.log(pseudoL[1].pseudo);
+                           // console.log(pseudoL[1].pseudo);
                         } else {
                             console.log("No data available");
                         }
@@ -100,7 +101,9 @@
                 }
             }
 
-        }, 100);
+        }, 10);
+       
+        window.addEventListener("load", (event) => {
         submit.addEventListener('click', (e) => {
             var message = document.getElementById('message').value;
             var user = auth.currentUser;
@@ -169,9 +172,7 @@
         // Écoute des modifications sur le nœud "messages"
         onValue(messagesRef, (snapshot) => {
             messagesList = document.getElementById("messages-list");
-            while (messagesList.firstChild) {
-                messagesList.removeChild(messagesList.firstChild);
-            }
+            
             messages = [];
 
             // Parcours de tous les enfants de "messages"
@@ -194,21 +195,7 @@
             messages.sort((a, b) => b.message - a.message);
 
             //console.log(messages);
-            messages.forEach((message) => {
-                const li = document.createElement('li');
-                const nom = document.createElement('span');
-                const text = document.createElement('span');
-                const br = document.createElement('br')
-                nom.textContent = message.pseudo + ":";
-                text.textContent = "Coups restant: " + message.message;
-
-                li.appendChild(nom);
-                li.appendChild(br);
-                li.appendChild(text);
-
-                messagesList.appendChild(li);
-
-            });
+            
         });
         setInterval(() => {
 
@@ -355,7 +342,7 @@
         });
 
 
-
+    })
     </script>
     <style>
         .formulaire {
@@ -424,13 +411,13 @@
     <div class="nonead">
         <ul id="messages"></ul>
         <div class="zone_saisie">
-            <input id="m" /> <button onclick="send()">Send</button>
+            <!--<input id="m" /> <button onclick="send()">Send</button>-->
         </div>
     </div>
     <div class="nonead">
         <ul id="messages"></ul>
         <form class="zone_saisie">
-            <input id="m" autocomplete="off" placeholder="Type a message and press Enter" required>
+            <input id="m" autocomplete="on" placeholder="Type a message and press Enter" required>
             <button type="submit">Send</button>
         </form>
     </div>
