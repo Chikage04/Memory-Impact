@@ -213,7 +213,7 @@ window.addEventListener("load", (event) => {
                 }
                 setTimeout(() => {
                     stop = 1;
-                }, 675);
+                }, 625);
             } else {
                 setTimeout(() => {
                     stop = 1;
@@ -314,7 +314,7 @@ window.addEventListener("load", (event) => {
                 }
                 setTimeout(() => {
                     stop = 1;
-                }, 675);
+                }, 625);
             } else {
                 setTimeout(() => {
                     stop = 1;
@@ -390,7 +390,7 @@ window.addEventListener("load", (event) => {
                 }
                 setTimeout(() => {
                     stop = 1;
-                }, 675);
+                }, 625);
             } else {
                 setTimeout(() => {
                     stop = 1;
@@ -464,7 +464,7 @@ window.addEventListener("load", (event) => {
                 }
                 setTimeout(() => {
                     stop = 1;
-                }, 675);
+                }, 625);
             } else {
                 setTimeout(() => {
                     stop = 1;

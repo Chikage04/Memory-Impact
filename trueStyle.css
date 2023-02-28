@@ -1,0 +1,10 @@
+ol{
+    color: aliceblue;
+    list-style: decimal;
+    height: 622px;
+    overflow-y: clip;
+    padding-top: 70px;
+    font-size: 18px;
+    padding-left: 24px;
+    text-transform: none;
+}
