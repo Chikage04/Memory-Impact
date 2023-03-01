@@ -199,7 +199,7 @@ window.addEventListener("load", (event) => {
 
                             }
 
-                        }, 600);
+                        }, 575);
                         two = 1;
                     }
 
@@ -213,7 +213,7 @@ window.addEventListener("load", (event) => {
                 }
                 setTimeout(() => {
                     stop = 1;
-                }, 625);
+                }, 600);
             } else {
                 setTimeout(() => {
                     stop = 1;
@@ -301,7 +301,7 @@ window.addEventListener("load", (event) => {
 
                             }
 
-                        }, 600);
+                        }, 575);
                         two = 1;
                     }
 
@@ -314,7 +314,7 @@ window.addEventListener("load", (event) => {
                 }
                 setTimeout(() => {
                     stop = 1;
-                }, 625);
+                }, 600);
             } else {
                 setTimeout(() => {
                     stop = 1;
@@ -377,7 +377,7 @@ window.addEventListener("load", (event) => {
 
                             }
 
-                        }, 600);
+                        }, 575);
                         two = 1;
                     }
 
@@ -390,7 +390,7 @@ window.addEventListener("load", (event) => {
                 }
                 setTimeout(() => {
                     stop = 1;
-                }, 625);
+                }, 600);
             } else {
                 setTimeout(() => {
                     stop = 1;
@@ -451,7 +451,7 @@ window.addEventListener("load", (event) => {
 
                             }
 
-                        }, 600);
+                        }, 575);
                         two = 1;
                     }
 
@@ -464,7 +464,7 @@ window.addEventListener("load", (event) => {
                 }
                 setTimeout(() => {
                     stop = 1;
-                }, 625);
+                }, 600);
             } else {
                 setTimeout(() => {
                     stop = 1;

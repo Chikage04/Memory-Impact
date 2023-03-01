@@ -63,3 +63,11 @@
 #fin2:hover{
     transform: scale(1.5);
 }
+.point{
+    top: 200px;
+    transition: all 0s;
+}
+#timer{
+    
+    top: 300px;
+}

@@ -51,25 +51,71 @@
 		var pseudoG;
 		var verif = document.querySelector('.verif');
 		var formulaire = document.querySelector('.formulaire');
+		var deco = document.querySelector('#deco');
 		var messages = [];
 		var submit = document.querySelector("#submit");
 		var messagesList = document.getElementById('messages-list');
 		var stop = 0;
+
 		setInterval(() => {
 			if (stop == 0) {
 				var user2 = auth.currentUser;
 				if (user2) {
-					const li = document.createElement('h2');
-					li.textContent = "Connecté";
-					li.setAttribute("class", "truc");
-					verif.appendChild(li);
-					formulaire.style.display = 'none'
-					formulaire.style.display = 'none'
 					stop = 1;
+					var email = user2.email;
+					formulaire.style.display = 'none'
+					const usersRef = ref(database, 'users');
+					const dbRef = ref(getDatabase());
+					var pseudoL = [];
+					get(child(dbRef, `users/`)).then((snapshot) => {
+						if (snapshot.exists()) {
+							// console.log("snapshot exit", pseudoG)
+							snapshot.forEach((childSnapshot) => {
+								// Récupération des données du message
+								var ps = childSnapshot.val();
+								//console.log("c'est ps.email", ps.email)
+								// console.log("c'est email", ps.email)
+								// Ajout du message au tableau
+								if (ps.email === email) {
+									pseudoG = ps.pseudo;
+									console.log("c'est son speudo", pseudoG)
+
+								}
+								//  console.log("pas de pseudo", pseudoG)
+								pseudoL.push(ps);
+								//messages = messages.map(i => Number(i));
+							});
+							const li = document.createElement('h2');
+							li.textContent = "Connecté: " + pseudoG;
+							verif.appendChild(li);
+							verif.style.display = "unset"
+
+							deco.style.display = "unset"
+							// console.log(pseudoL[1].pseudo);
+						} else {
+							console.log("No data available");
+						}
+					}).catch((error) => {
+						console.error(error);
+					});
+				} else {
+					verif.style.display = "none"
+					while (verif.firstChild) {
+						verif.removeChild(verif.firstChild);
+					}
+					stop = 0;
+					formulaire.style.display = 'grid'
+					formulaire.style.height = '100%'
+					deco.style.display = "none"
+					setTimeout(() => {
+
+						formulaire.style.opacity = '100%'
+					}, 1200);
 				}
 			}
 
 		}, 10);
+
 		submit.addEventListener('click', (e) => {
 			var message = document.getElementById('message').value;
 			var user = auth.currentUser;
@@ -96,58 +142,29 @@
 			}
 		});
 		// Récupération de la référence à la base de données
-		const messagesRef = ref(database, 'messages');
 		const pseu = ref(database, 'users/');
-		// Initialisation du tableau de messages
-		//const messages = [];
+		const messagesRefEZ = ref(database, '/messages/' + '/normal/');
+		onValue(messagesRefEZ, (snapshot) => {
+			 messages = [];
+			 messagesList = document.getElementById("messages-list");
 
-		// Écoute des modifications sur le nœud "messages"
-		onValue(messagesRef, (snapshot) => {
-			messagesList = document.getElementById("messages-list");
-			while (messagesList.firstChild) {
+			 while (messagesList.firstChild) {
 				messagesList.removeChild(messagesList.firstChild);
-			}
-			messages = [];
-
-			// Parcours de tous les enfants de "messages"
+			 }
+			
 			snapshot.forEach((childSnapshot) => {
-				// Récupération des données du message
-				const message = childSnapshot.val();
-				// Ajout du message au tableau
-
-				messages.push(message);
-				//messages = messages.map(i => Number(i));
+				messages.push(childSnapshot.val());
 			});
 
-
-			// Le tableau contient maintenant tous les messages stockés dans la base de données
-			console.log(messages);
-
-
-			//document.getElementById('messages-list').innerHTML = '';
-
+			// Tri des messages en ordre décroissant
 			messages.sort((b, a) => b.message - a.message);
 
-			//console.log(messages);
-			messages.forEach((message) => {
-				const li = document.createElement('li');
-				const nom = document.createElement('span');
-				const text = document.createElement('span');
-				const br = document.createElement('br')
-				nom.textContent = message.pseudo + ":";
-				text.textContent = "Coups utilisé: " + message.message;
-
-				li.appendChild(nom);
-				li.appendChild(br);
-				li.appendChild(text);
-
-				messagesList.appendChild(li);
-
-			});
+			// Génération de la liste des messages
+			messagesList.innerHTML = messages.map((message) => {
+				return `<li><span style="font-size: 26px; font-weight: 400;">${message.pseudo}:</span><br>Coups utilisés: ${message.message}</li>`;
+			}).join("");
 		});
-		setInterval(() => {
 
-		},);
 		submitData.addEventListener('click', (e) => {
 
 			var email = document.getElementById('email').value;
@@ -156,35 +173,72 @@
 			if (pseudoG == undefined || pseudoG == null) {
 				pseudoG = document.getElementById('psd').value;
 			}
+			if (pseudo !== "") {
+				var tuPeux = 1
+				const usersRef = ref(database, 'users');
+				const dbRef = ref(getDatabase());
+				get(child(dbRef, `users/`)).then((snapshot) => {
+					if (snapshot.exists()) {
+						snapshot.forEach((childSnapshot) => {
+							// Récupération des données du message
+							var ps = childSnapshot.val();
+							// Ajout du message au tableau
+							if (ps.pseudo === pseudo) {
+								alert("Ce pseudo existe déjà")
+								tuPeux = 0;
+							} else {
+								if (tuPeux == 1) {
+									createUserWithEmailAndPassword(auth, email, password, pseudo)
 
-			//sign up user
-			createUserWithEmailAndPassword(auth, email, password, pseudo)
-				.then((userCredential) => {
-					// Signed in
-					const user = userCredential.user;
-					// ... user.uid
-					set(ref(database, 'users/' + user.uid), {
-						email: email,
-						password: password,
-						pseudo: pseudo
-					})
-						.then(() => {
-							// Data saved successfully!
-							alert('user created successfully');
+
+										.then((userCredential) => {
+											// Signed in
+
+											const user = userCredential.user;
+											// ... user.uid
+											set(ref(database, 'users/' + user.uid), {
+												email: email,
+												password: password,
+												pseudo: pseudo
+											})
+												.then(() => {
+													// Data saved successfully!
+													alert('user created successfully');
 
 
-						})
-						.catch((error) => {
-							// The write failed...
-							alert(error);
+												})
+												.catch((error) => {
+													// The write failed...
+													alert(error);
+												});
+
+										})
+										.catch((error) => {
+											const errorCode = error.code;
+											const errorMessage = error.message;
+											// ..
+											alert(errorMessage);
+										});
+								}
+
+							}
+
 						});
-				})
-				.catch((error) => {
-					const errorCode = error.code;
-					const errorMessage = error.message;
-					// ..
-					alert(errorMessage);
+
+					} else {
+						console.log("No data available");
+					}
+				}).catch((error) => {
+					console.error(error);
 				});
+				//sign up user
+
+
+
+			} else {
+				alert("Veuillez entrer un pseudo")
+			}
+
 			const usersRef = ref(database, 'users');
 			const dbRef = ref(getDatabase());
 			var pseudoL = [];
@@ -217,9 +271,15 @@
 			//sign out user
 			signOut(auth).then(() => {
 				// Sign-out successful.
+				stop = 0;
 				formulaire.style.display = 'unset'
 				var connect = document.querySelector(".truc")
 				connect.remove();
+				deco.style.display = "none"
+				verif.style.display = "none"
+				while (verif.firstChild) {
+					verif.removeChild(verif.firstChild);
+				}
 			}).catch((error) => {
 				// An error happened.
 			});
@@ -227,8 +287,8 @@
 
 		document.querySelector("#franchement").addEventListener('click', (e) => {
 
-			var email = document.getElementById('email').value;
-			var password = document.getElementById('psw').value;
+			var email = document.getElementById('email2').value;
+			var password = document.getElementById('psw2').value;
 			var pseudo = document.getElementById('psd').value;
 			if (pseudoG == undefined || pseudoG == null) {
 				pseudoG = document.getElementById('psd').value;
@@ -292,6 +352,37 @@
 		});
 
 
+
+	</script>
+	<script>
+
+
+		function back() {
+			document.querySelector(".debut").style.display = "unset"
+			document.querySelector(".apres2").style.display = "none"
+			document.querySelector(".apres1").style.display = "none"
+			var ins = document.querySelector(".create")
+			ins.style.display = "none"
+			var co = document.querySelector(".co")
+			co.style.display = "none"
+
+		}
+		function inscri() {
+			var ins = document.querySelector(".create")
+			ins.style.display = "unset"
+			document.querySelector(".debut").style.display = "none"
+			document.querySelector(".apres1").style.display = "unset"
+			document.querySelector("#retour1").style.display = "unset"
+
+		}
+		function connect() {
+
+			var co = document.querySelector(".co")
+			co.style.display = "unset"
+			document.querySelector(".debut").style.display = "none"
+			document.querySelector(".apres2").style.display = "unset"
+			document.querySelector("#retour2").style.display = "unset"
+		}
 	</script>
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css">
@@ -300,44 +391,107 @@
 		.formulaire {
 			position: relative;
 			z-index: 999;
+			display: none;
+			opacity: 0;
+			height: 0px;
+		}
+
+		.create,
+		.co {
+			display: none;
+		}
+
+		#retour1,
+		#retour2 {
+			display: none;
+		}
+
+		.apres1,
+		.apres2 {
+			display: none;
+		}
+
+		.registerbtn {
+			margin-right: 10px;
+			background-color: #171752bf;
+			color: white;
+			border: #2a5174 2px solid;
+			border-radius: 6px;
+			cursor: pointer;
+			margin: 6px 5px 0px 0px;
+			padding: 0px 5px 0px 5px;
+		}
+
+
+		#normal,
+		#hard,
+		#dark,
+		#speed,
+		#hell {
+			display: none;
+		}
+
+		#normal {
+			display: flex;
 		}
 	</style>
 </head>
 
 <body>
 	<div class="verif">
-		<button type="button" id="deco" name="deco" class="registerbtn">Déconnection</button>
+
 	</div>
+	<button type="button" id="deco" name="deco" class="registerbtn">Déconnection</button>
 	<form class="formulaire">
 		<div class="container">
-			<h1>Register</h1>
-			<p>Please fill in this form to create an account.</p>
-			<hr>
+			<h1>Authentification</h1>
+			<div class="create">
+				<p>Votre pseudo ne pourras pas être modifié après l'inscription.</p>
+				<hr>
+				<label for="email"><b>Email</b></label>
+				<input type="text" placeholder="Enter Email" id="email" required>
 
-			<label for="email"><b>Email</b></label>
-			<input type="text" placeholder="Enter Email" id="email" required>
+				<label><b>Mot-de-passe</b></label>
+				<input type="password" placeholder="Password" id="psw" required>
 
-			<label><b>Password</b></label>
-			<input type="password" placeholder="Password" id="psw" required>
+				<label for="pseudo"><b>Pseudo</b></label>
+				<input type="text" placeholder="Entre un Pseudo" id="psd" required>
+				<hr>
 
-			<label for="pseudo"><b>Pseudo</b></label>
-			<input type="text" placeholder="Entre un Pseudo" id="psd" required>
+			</div>
+			<div class="co">
+				<hr>
+				<label for="email"><b>Email</b></label>
+				<input type="text" placeholder="Enter Email" id="email2" required>
 
+				<label><b>Mot-de-passe</b></label>
+				<input type="password" placeholder="Password" id="psw2" required>
+				<hr>
+			</div>
 
-			<hr>
-			<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+			<!--<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>-->
+			<div class="debut">
+				<button type="button" id="inscription" name="submitData" class="registerbtn"
+					onclick="inscri()">Inscription</button>
+				<button type="button" id="connexion" name="franchement" class="registerbtn"
+					onclick="connect()">Connexion</button>
+			</div>
+			<div class="apres1">
+				<button type="button" id="submitData" name="submitData" class="registerbtn">Inscription</button>
+				<button type="button" id="retour1" class="registerbtn" onclick="back()">Retour</button>
 
-			<button type="button" id="submitData" name="submitData" class="registerbtn">Inscription</button>
-			<button type="button" id="franchement" name="franchement" class="registerbtn">Connexion</button>
-			<button type="button" id="deco" name="deco" class="registerbtn">Déconnection</button>
+			</div>
+			<div class="apres2">
+				<button type="button" id="franchement" name="franchement" class="registerbtn">Connexion</button>
+				<button type="button" id="retour2" class="registerbtn" onclick="back()">Retour</button>
+			</div>
+
 			<textarea id="message" class="form-control type_msg" placeholder="Type your message..."></textarea>
 			<button id="submit" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i>
 			</button>
 		</div>
 
-		<div class="container signin">
-			<p>Already have an account? <a href="#">Sign in</a>.</p>
-		</div>
+
 	</form>
 
 	<header class="site-header container animated fadeInDown">
@@ -389,8 +543,43 @@
 			<div class="home-projects">
 				<div class="row">
 					<div class="col-md-6 col-sm-12">
-						<div class="project-title animated fadeInUp">
-							<h2>Tableau des scores</h2>
+						<div class="project-title animated fadeInUp" id="normal">
+							<h2> <u>Tableau des scores:</u>
+							</h2>
+							<br>
+							<h3><u>Mode Normal</u></h3>
+							<ol id="messages-list">
+							</ol>
+						</div>
+						<div class="project-title animated fadeInUp" id="hard">
+							<h2> <u>Tableau des scores:</u>
+							</h2>
+							<br>
+							<h3><u>Mode Hard</u></h3>
+							<ol id="messages-list">
+							</ol>
+						</div>
+						<div class="project-title animated fadeInUp" id="dark">
+							<h2> <u>Tableau des scores:</u>
+							</h2>
+							<br>
+							<h3><u>Mode Blind</u></h3>
+							<ol id="messages-list">
+							</ol>
+						</div>
+						<div class="project-title animated fadeInUp" id="speed">
+							<h2> <u>Tableau des scores:</u>
+							</h2>
+							<br>
+							<h3><u>Mode Chrono</u></h3>
+							<ol id="messages-list">
+							</ol>
+						</div>
+						<div class="project-title animated fadeInUp" id="hell">
+							<h2> <u>Tableau des scores:</u>
+							</h2>
+							<br>
+							<h3><u>Mode Chrono-Hell</u></h3>
 							<ol id="messages-list">
 							</ol>
 						</div>
@@ -516,9 +705,6 @@
 				<div class="main-footer">
 					<ul class="social">
 						<li><a>Discord: Chikage#4907</a></li>
-						<li><button type="button" onclick="jsp()">Récupérer la valeur</button></li>
-						<li><input id="in" type="text"></li>
-						<li><input id="iné" type="text"></li>
 					</ul>
 				</div>
 			</div>
@@ -529,9 +715,6 @@
 			</div>
 		</div>
 	</footer>
-
-	<script src="js/jquery.min.js"></script>
-	<script src="js/templatemo_custom.js"></script>
 </body>
 
 </html>
