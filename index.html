@@ -6,6 +6,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 	<title>memory-impact</title>
 	<script async src="https://www.google.com/recaptcha/api.js"></script>
+	<script>
+   function onSubmit(token) {
+     document.getElementById("demo-form").submit();
+   }
+ </script>
 <script>
   // If reCAPTCHA is still loading, grecaptcha will be undefined.
   grecaptcha.ready(function(){
@@ -447,6 +452,10 @@
 </head>
 
 <body>
+	<button class="g-recaptcha" 
+        data-sitekey="reCAPTCHA_site_key" 
+        data-callback='onSubmit' 
+        data-action='submit'>Submit</button>
 	<div class="verif">
 
 	</div>
