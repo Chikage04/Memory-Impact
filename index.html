@@ -5,22 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 	<title>memory-impact</title>
-	<script async src="https://www.google.com/recaptcha/api.js"></script>
-	<script>
-   function onSubmit(token) {
-     document.getElementById("demo-form").submit();
-   }
- </script>
-<script>
-  // If reCAPTCHA is still loading, grecaptcha will be undefined.
-  grecaptcha.ready(function(){
-    grecaptcha.render("container", {
-      sitekey: "6LcI48MkAAAAAGfDl0XY0_qP335flvSdX4lLV1qx"
-    });
-  });
-</script>
 	<script type="module">
-
 		// Import the functions you need from the SDKs you need
 		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 		import {
@@ -68,10 +53,22 @@
 		var deco = document.querySelector('#deco');
 		var messages = [];
 		var submit = document.querySelector("#submit");
-		var messagesList = document.getElementById('messages-list');
+		var messagesList;
 		var stop = 0;
+		window.addEventListener('load', (event) => {
 
+			setInterval(() => {
+				var oui = document.querySelector(".rc-anchor-center-item").textContent
+				if (oui == "L'hôte local ne figure pas dans la liste des domaines acceptés pour la clé de ce site.") {
+					document.querySelector('.grecaptcha-badge').style.display = 'none';
+					return;
+				}
+			}, 1000);
+
+
+		})
 		setInterval(() => {
+
 			if (stop == 0) {
 				var user2 = auth.currentUser;
 				if (user2) {
@@ -128,7 +125,7 @@
 				}
 			}
 
-		}, 10);
+		}, 1000);
 
 		submit.addEventListener('click', (e) => {
 			var message = document.getElementById('message').value;
@@ -159,13 +156,97 @@
 		const pseu = ref(database, 'users/');
 		const messagesRefEZ = ref(database, '/messages/' + '/normal/');
 		onValue(messagesRefEZ, (snapshot) => {
-			 messages = [];
-			 messagesList = document.getElementById("messages-list");
+			messages = [];
+			messagesList = document.getElementById("messages-list1");
 
-			 while (messagesList.firstChild) {
+			while (messagesList.firstChild) {
 				messagesList.removeChild(messagesList.firstChild);
-			 }
-			
+			}
+
+			snapshot.forEach((childSnapshot) => {
+				messages.push(childSnapshot.val());
+			});
+
+			// Tri des messages en ordre décroissant
+			messages.sort((b, a) => b.message - a.message);
+
+			// Génération de la liste des messages
+			messagesList.innerHTML = messages.map((message) => {
+				return `<li><span style="font-size: 26px; font-weight: 400;">${message.pseudo}:</span><br>Coups utilisés: ${message.message}</li>`;
+			}).join("");
+		});
+		const messagesRefBIS = ref(database, '/messages/' + '/hard/');
+		onValue(messagesRefBIS, (snapshot) => {
+			messages = [];
+			messagesList = document.getElementById("messages-list2");
+
+			while (messagesList.firstChild) {
+				messagesList.removeChild(messagesList.firstChild);
+			}
+
+			snapshot.forEach((childSnapshot) => {
+				messages.push(childSnapshot.val());
+			});
+
+			// Tri des messages en ordre décroissant
+			messages.sort((b, a) => b.message - a.message);
+
+			// Génération de la liste des messages
+			messagesList.innerHTML = messages.map((message) => {
+				return `<li><span style="font-size: 26px; font-weight: 400;">${message.pseudo}:</span><br>Coups utilisés: ${message.message}</li>`;
+			}).join("");
+		});
+		const messagesRefDark = ref(database, '/messages/' + '/dark/');
+		onValue(messagesRefDark, (snapshot) => {
+			messages = [];
+			messagesList = document.getElementById("messages-list3");
+
+			while (messagesList.firstChild) {
+				messagesList.removeChild(messagesList.firstChild);
+			}
+
+			snapshot.forEach((childSnapshot) => {
+				messages.push(childSnapshot.val());
+			});
+
+			// Tri des messages en ordre décroissant
+			messages.sort((b, a) => b.message - a.message);
+
+			// Génération de la liste des messages
+			messagesList.innerHTML = messages.map((message) => {
+				return `<li><span style="font-size: 26px; font-weight: 400;">${message.pseudo}:</span><br>Coups utilisés: ${message.message}</li>`;
+			}).join("");
+		});
+		const messagesRefSpeed = ref(database, '/messages/' + '/speed/');
+		onValue(messagesRefSpeed, (snapshot) => {
+			messages = [];
+			messagesList = document.getElementById("messages-list4");
+
+			while (messagesList.firstChild) {
+				messagesList.removeChild(messagesList.firstChild);
+			}
+
+			snapshot.forEach((childSnapshot) => {
+				messages.push(childSnapshot.val());
+			});
+
+			// Tri des messages en ordre décroissant
+			messages.sort((b, a) => b.message - a.message);
+
+			// Génération de la liste des messages
+			messagesList.innerHTML = messages.map((message) => {
+				return `<li><span style="font-size: 26px; font-weight: 400;">${message.pseudo}:</span><br>Coups utilisés: ${message.message}</li>`;
+			}).join("");
+		});
+		const messagesRefHell = ref(database, '/messages/' + '/hell/');
+		onValue(messagesRefHell, (snapshot) => {
+			messages = [];
+			messagesList = document.getElementById("messages-list5");
+
+			while (messagesList.firstChild) {
+				messagesList.removeChild(messagesList.firstChild);
+			}
+
 			snapshot.forEach((childSnapshot) => {
 				messages.push(childSnapshot.val());
 			});
@@ -397,6 +478,65 @@
 			document.querySelector(".apres2").style.display = "unset"
 			document.querySelector("#retour2").style.display = "unset"
 		}
+		var tab = 1;
+		function before() {
+			tab--;
+			if (tab < 1) {
+				tab = 5;
+			}
+			document.querySelector("#normal").style.display = "none";
+			document.querySelector("#hard").style.display = "none";
+			document.querySelector("#dark").style.display = "none";
+			document.querySelector("#speed").style.display = "none";
+			document.querySelector("#hell").style.display = "none";
+
+			switch (tab) {
+				case 1:
+					document.querySelector("#normal").style.display = "flex";
+					break;
+				case 2:
+					document.querySelector("#hard").style.display = "flex";
+					break;
+				case 3:
+					document.querySelector("#dark").style.display = "flex";
+					break;
+				case 4:
+					document.querySelector("#speed").style.display = "flex";
+					break;
+				case 5:
+					document.querySelector("#hell").style.display = "flex";
+					break;
+			}
+		}
+		function next() {
+			tab++;
+			if (tab > 5) {
+				tab = 1;
+			}
+			document.querySelector("#normal").style.display = "none";
+			document.querySelector("#hard").style.display = "none";
+			document.querySelector("#dark").style.display = "none";
+			document.querySelector("#speed").style.display = "none";
+			document.querySelector("#hell").style.display = "none";
+
+			switch (tab) {
+				case 1:
+					document.querySelector("#normal").style.display = "flex";
+					break;
+				case 2:
+					document.querySelector("#hard").style.display = "flex";
+					break;
+				case 3:
+					document.querySelector("#dark").style.display = "flex";
+					break;
+				case 4:
+					document.querySelector("#speed").style.display = "flex";
+					break;
+				case 5:
+					document.querySelector("#hell").style.display = "flex";
+					break;
+			}
+		}
 	</script>
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css">
@@ -448,14 +588,43 @@
 		#normal {
 			display: flex;
 		}
+
+		.g-recaptcha {
+			display: none;
+		}
+
+		.rc-anchor-error-message {
+			color: aqua !important;
+		}
+
+		.choi, .choiX {
+			display: flex;
+			width: 89%;
+			font-size: 19px;
+			top: 80px;
+			position: relative;
+			cursor: pointer;
+			color: #9dacc7;
+			margin-bottom: 10px;
+			gap: 253px;
+			font-weight: 300;
+		}
+
+		.choi p, .choiX p {
+			margin-bottom: 0px;
+		}
+
+		.choi p:hover, .choiX p:hover {
+			color: rgb(177, 190, 244);
+		}
+		.choiX{
+			width: 97%;
+			gap: 292px;
+		}
 	</style>
 </head>
 
 <body>
-	<button class="g-recaptcha" 
-        data-sitekey="6LcI48MkAAAAAGfDl0XY0_qP335flvSdX4lLV1qx" 
-        data-callback='onSubmit' 
-        data-action='submit'>Submit</button>
 	<div class="verif">
 
 	</div>
@@ -561,44 +730,65 @@
 			<div class="home-projects">
 				<div class="row">
 					<div class="col-md-6 col-sm-12">
+
 						<div class="project-title animated fadeInUp" id="normal">
+							<div class="choi">
+								<p onclick="before()"><-Précendent </p>
+								<p onclick="next()">Suivant-></p>
+							</div>
 							<h2> <u>Tableau des scores:</u>
 							</h2>
 							<br>
 							<h3><u>Mode Normal</u></h3>
-							<ol id="messages-list">
+							<ol id="messages-list1">
 							</ol>
 						</div>
 						<div class="project-title animated fadeInUp" id="hard">
+							<div class="choi">
+								<p onclick="before()"><-Précendent </p>
+								<p onclick="next()">Suivant-></p>
+							</div>
 							<h2> <u>Tableau des scores:</u>
 							</h2>
 							<br>
 							<h3><u>Mode Hard</u></h3>
-							<ol id="messages-list">
+							<ol id="messages-list2">
 							</ol>
 						</div>
 						<div class="project-title animated fadeInUp" id="dark">
+							<div class="choi">
+								<p onclick="before()"><-Précendent </p>
+								<p onclick="next()">Suivant-></p>
+							</div>
 							<h2> <u>Tableau des scores:</u>
 							</h2>
 							<br>
 							<h3><u>Mode Blind</u></h3>
-							<ol id="messages-list">
+							<ol id="messages-list3">
 							</ol>
 						</div>
 						<div class="project-title animated fadeInUp" id="speed">
+							<div class="choi">
+								<p onclick="before()"><-Précendent </p>
+								<p onclick="next()">Suivant-></p>
+							</div>
 							<h2> <u>Tableau des scores:</u>
 							</h2>
 							<br>
 							<h3><u>Mode Chrono</u></h3>
-							<ol id="messages-list">
+							<ol id="messages-list4">
 							</ol>
 						</div>
 						<div class="project-title animated fadeInUp" id="hell">
+							<div class="choiX">
+								<p onclick="before()"><-Précendent </p>
+								<p onclick="next()">Suivant-></p>
+							</div>
 							<h2> <u>Tableau des scores:</u>
 							</h2>
 							<br>
 							<h3><u>Mode Chrono-Hell</u></h3>
-							<ol id="messages-list">
+							<ol id="messages-list5">
 							</ol>
 						</div>
 					</div>
