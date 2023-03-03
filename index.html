@@ -55,18 +55,6 @@
 		var submit = document.querySelector("#submit");
 		var messagesList;
 		var stop = 0;
-		window.addEventListener('load', (event) => {
-
-			setInterval(() => {
-				var oui = document.querySelector(".rc-anchor-center-item").textContent
-				if (oui == "L'hôte local ne figure pas dans la liste des domaines acceptés pour la clé de ce site.") {
-					document.querySelector('.grecaptcha-badge').style.display = 'none';
-					return;
-				}
-			}, 1000);
-
-
-		})
 		setInterval(() => {
 
 			if (stop == 0) {
