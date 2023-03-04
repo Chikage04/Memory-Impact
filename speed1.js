@@ -18,8 +18,6 @@ const array = [
     'https://genshin.honeyhunterworld.com/img/i_n330013_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330014_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330015_gcg_high_resolution.webp',
-    'https://genshin.honeyhunterworld.com/img/i_n330016_gcg_high_resolution.webp',
-    'https://genshin.honeyhunterworld.com/img/i_n330017_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330000_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330001_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330002_gcg_high_resolution.webp',
@@ -34,9 +32,7 @@ const array = [
     'https://genshin.honeyhunterworld.com/img/i_n330012_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330013_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330014_gcg_high_resolution.webp',
-    'https://genshin.honeyhunterworld.com/img/i_n330015_gcg_high_resolution.webp',
-    'https://genshin.honeyhunterworld.com/img/i_n330016_gcg_high_resolution.webp',
-    'https://genshin.honeyhunterworld.com/img/i_n330017_gcg_high_resolution.webp'
+    'https://genshin.honeyhunterworld.com/img/i_n330015_gcg_high_resolution.webp'
 
 ];
 window.addEventListener("load", (event) => {
@@ -140,9 +136,6 @@ window.addEventListener("load", (event) => {
                                 end.classList.add("endA");
                             }, 500); 
                         }, 400);
-                        
-                        
-                        
                     }
                 }, 200);
                 
