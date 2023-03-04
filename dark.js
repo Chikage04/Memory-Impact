@@ -218,7 +218,7 @@ window.addEventListener("load", (event) => {
                     dos.classList.add("sombre2");
                     t.classList.add("sombre");
 
-                }, 550);
+                }, 670);
                 closest.classList.remove("degoff");
                 if (two == 2) {
 
@@ -351,7 +351,7 @@ window.addEventListener("load", (event) => {
                     dos.classList.add("sombre2");
                     t.classList.add("sombre");
 
-                }, 550);
+                }, 670);
                 
                 if (two == 2) {
 
@@ -454,7 +454,7 @@ window.addEventListener("load", (event) => {
                     dos.classList.add("sombre2");
                     t.classList.add("sombre");
 
-                }, 550);
+                }, 670);
                 if (two == 2) {
 
                     envers = 1;
@@ -554,7 +554,7 @@ window.addEventListener("load", (event) => {
                     dos.classList.add("sombre2");
                     t.classList.add("sombre");
 
-                }, 550);
+                }, 670);
                 if (two == 2) {
 
                     envers = 1;

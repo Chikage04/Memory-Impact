@@ -134,7 +134,7 @@ window.addEventListener("load", (event) => {
                     setInterval(() => {
                         let beurk = document.getElementsByClassName("degend");
                         beurk = beurk.length;
-                        if (beurk == 28) {
+                        if (beurk == 36) {
                             var end = document.querySelector(".end")
                             end.style.display = "unset"
                             setTimeout(() => {

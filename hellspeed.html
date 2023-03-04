@@ -148,6 +148,36 @@
               alert('You need to log in first');
           }
       });
+      var truc = 0;
+      setInterval(() => {
+            var message = document.getElementById('message').value;
+            var user = auth.currentUser;
+            if (user) {
+                var fin = document.querySelector(".end")
+                var pts = document.querySelector(".point").textContent;
+                if (truc == 0) {
+                    if (fin.style.display == "unset") {
+                        truc = 1;
+                        var userId = user.uid;
+                        var userEmail = user.email;
+
+                        const id = push(child(ref(database), 'users/' + userId + '/messages' + '/hell')).key;
+                        set(ref(database, '/messages/' + '/hell/' + id), {
+                            message: pts,
+                            pseudo: pseudoG
+                        });
+
+
+                        //messages.push(message);
+                        document.getElementById('message').value = "";
+
+                        //alert('message has sent to ' + userEmail);
+
+                    }
+                }
+            }
+
+        }, 100);
       // Récupération de la référence à la base de données
       const messagesRef = ref(database, 'messages');
       const pseu = ref(database, 'users/');

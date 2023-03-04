@@ -114,7 +114,7 @@ window.addEventListener("load", (event) => {
                 fini = fini.length;
 
 
-                let temps = 59
+                let temps = 74
                 const timerElement = document.getElementById("timer")
                 
                 setInterval(() => {
