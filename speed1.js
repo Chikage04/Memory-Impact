@@ -20,7 +20,6 @@ const array = [
     'https://genshin.honeyhunterworld.com/img/i_n330015_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330016_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330017_gcg_high_resolution.webp',
-    'https://genshin.honeyhunterworld.com/img/i_n330018_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330000_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330001_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330002_gcg_high_resolution.webp',
@@ -37,8 +36,7 @@ const array = [
     'https://genshin.honeyhunterworld.com/img/i_n330014_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330015_gcg_high_resolution.webp',
     'https://genshin.honeyhunterworld.com/img/i_n330016_gcg_high_resolution.webp',
-    'https://genshin.honeyhunterworld.com/img/i_n330017_gcg_high_resolution.webp',
-    'https://genshin.honeyhunterworld.com/img/i_n330018_gcg_high_resolution.webp'
+    'https://genshin.honeyhunterworld.com/img/i_n330017_gcg_high_resolution.webp'
 
 ];
 window.addEventListener("load", (event) => {
@@ -114,7 +112,7 @@ window.addEventListener("load", (event) => {
                 fini = fini.length;
 
 
-                let temps = 74
+                let temps = 69
                 const timerElement = document.getElementById("timer")
                 
                 setInterval(() => {
