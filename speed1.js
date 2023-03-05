@@ -128,7 +128,7 @@ window.addEventListener("load", (event) => {
                     if(temps == 0){
                         setTimeout(() => {
                             stop = 2;
-                            var end = document.querySelector(".end")
+                            var end = document.querySelector(".end2")
                             end.style.display = "unset"
                             setTimeout(() => {
                                 end.classList.add("endA");
@@ -136,6 +136,19 @@ window.addEventListener("load", (event) => {
                         }, 400);
                     }
                 }, 200);
+                setTimeout(() => {
+                    setInterval(() => {
+                        let beurk = document.getElementsByClassName("degend");
+                        beurk = beurk.length;
+                        if (beurk == 28) {
+                            var end = document.querySelector(".end")
+                            end.style.display = "unset"
+                            setTimeout(() => {
+                                end.classList.add("endA");
+                            }, 150);
+                        }
+                    }, 130);
+                }, 2000);
                 
 
 

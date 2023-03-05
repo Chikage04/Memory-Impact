@@ -160,8 +160,6 @@ window.addEventListener("load", (event) => {
                                 end.classList.add("endA");
                             }, 150);
                         }
-
-
                     }, 130);
                 }, 2000);
 
