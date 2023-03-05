@@ -269,6 +269,7 @@
 							if (ps.pseudo === pseudo) {
 								alert("Ce pseudo existe déjà")
 								tuPeux = 0;
+								return
 							} else {
 								if (tuPeux == 1) {
 									createUserWithEmailAndPassword(auth, email, password, pseudo)
