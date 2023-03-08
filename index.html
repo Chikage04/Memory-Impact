@@ -279,21 +279,23 @@
 											// Signed in
 
 											const user = userCredential.user;
+											var lgDate = new Date();
 											// ... user.uid
 											set(ref(database, 'users/' + user.uid), {
 												email: email,
 												password: password,
-												pseudo: pseudo
+												pseudo: pseudo,
+												last_login: lgDate
 											})
 												.then(() => {
 													// Data saved successfully!
 													alert('user created successfully');
 
-
 												})
 												.catch((error) => {
 													// The write failed...
 													alert(error);
+													
 												});
 
 										})
@@ -301,7 +303,8 @@
 											const errorCode = error.code;
 											const errorMessage = error.message;
 											// ..
-											alert(errorMessage);
+											//alert(errorMessage);
+											
 										});
 								}
 
@@ -439,8 +442,7 @@
 
 	</script>
 	<script>
-
-
+		
 		function back() {
 			document.querySelector(".debut").style.display = "unset"
 			document.querySelector(".apres2").style.display = "none"

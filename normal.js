@@ -168,9 +168,7 @@ window.addEventListener("load", (event) => {
                 closest.classList.remove("degoff");
                 closest.classList.add("deg");
                 if (two == 2) {
-
                     envers = 1;
-
                     const rep = document.getElementsByClassName("card deg");
 
                     if (rep[1] !== null && rep[1] !== undefined) {

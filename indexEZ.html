@@ -66,8 +66,10 @@
             if (stop == 0) {
                 var user2 = auth.currentUser;
                 if (user2) {
+                    console.log("etape 22")
                     stop = 1;
                     var email = user2.email;
+                    console.log(user2.email + " le mail")
                     formulaire.style.display = 'none'
                     const usersRef = ref(database, 'users');
                     const dbRef = ref(getDatabase());
@@ -75,6 +77,7 @@
 
                     get(child(dbRef, `users/`)).then((snapshot) => {
                         if (snapshot.exists()) {
+                            console.log("etape 333")
                             // console.log("snapshot exit", pseudoG)
                             snapshot.forEach((childSnapshot) => {
                                 // Récupération des données du message
@@ -83,6 +86,7 @@
                                 // console.log("c'est email", ps.email)
                                 // Ajout du message au tableau
                                 if (ps.email === email) {
+                                    console.log("etape 4444")
                                     pseudoG = ps.pseudo;
                                     console.log("c'est son speudo", pseudoG)
 
@@ -162,7 +166,7 @@
                         var userEmail = user.email;
 
                         const id = push(child(ref(database), 'users/' + userId + '/messages' + '/normal')).key;
-                        set(ref(database, '/messages/' + '/normal/' + id), {
+                        set(ref(database, '/messages/' + '/normal/' + userId), {
                             message: pts,
                             pseudo: pseudoG
                         });
@@ -240,35 +244,76 @@
             if (pseudoG == undefined || pseudoG == null) {
                 pseudoG = document.getElementById('psd').value;
             }
+            if (pseudo !== "") {
+                var tuPeux = 1
+                const usersRef = ref(database, 'users');
+                const dbRef = ref(getDatabase());
+                get(child(dbRef, `users/`)).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        snapshot.forEach((childSnapshot) => {
+                            // Récupération des données du message
+                            var ps = childSnapshot.val();
+                            // Ajout du message au tableau
+                            if (ps.pseudo === pseudo) {
+                                alert("Ce pseudo existe déjà")
+                                tuPeux = 0;
+                                return
+                            } else {
+                                if (tuPeux == 1) {
+                                    createUserWithEmailAndPassword(auth, email, password, pseudo)
 
-            //sign up user
-            createUserWithEmailAndPassword(auth, email, password, pseudo)
-                .then((userCredential) => {
-                    // Signed in
-                    const user = userCredential.user;
-                    // ... user.uid
-                    set(ref(database, 'users/' + user.uid), {
-                        email: email,
-                        password: password,
-                        pseudo: pseudo
-                    })
-                        .then(() => {
-                            // Data saved successfully!
-                            alert('user created successfully');
 
+                                        .then((userCredential) => {
+                                            // Signed in
 
-                        })
-                        .catch((error) => {
-                            // The write failed...
-                            alert(error);
+                                            const user = userCredential.user;
+                                            var lgDate = new Date();
+                                            // ... user.uid
+                                            set(ref(database, 'users/' + user.uid), {
+                                                email: email,
+                                                password: password,
+                                                pseudo: pseudo,
+                                                last_login: lgDate
+                                            })
+                                                .then(() => {
+                                                    // Data saved successfully!
+                                                    alert('user created successfully');
+
+                                                })
+                                                .catch((error) => {
+                                                    // The write failed...
+                                                    alert(error);
+
+                                                });
+
+                                        })
+                                        .catch((error) => {
+                                            const errorCode = error.code;
+                                            const errorMessage = error.message;
+                                            // ..
+                                            //alert(errorMessage);
+
+                                        });
+                                }
+
+                            }
+
                         });
-                })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    // ..
-                    alert(errorMessage);
+
+                    } else {
+                        console.log("No data available");
+                    }
+                }).catch((error) => {
+                    console.error(error);
                 });
+                //sign up user
+
+
+
+            } else {
+                alert("Veuillez entrer un pseudo")
+            }
+
             const usersRef = ref(database, 'users');
             const dbRef = ref(getDatabase());
             var pseudoL = [];
