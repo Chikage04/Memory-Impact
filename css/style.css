@@ -1160,14 +1160,14 @@ span[class*="border-"] {
     .choi,
     .choiX {
         top: 30px !important;
-        gap: 34px !important;
+        gap: 40px !important;
 
     }
 
     .home-intro p {
         font-size: 15px;
         line-height: 1.70;
-        width: 95%;
+        width: 100%;
     }
 
     a.toggle-nav {
@@ -1190,6 +1190,7 @@ span[class*="border-"] {
         margin-bottom: 150%!important;
     }
     h1{
-        font-size: 32px!important;
+        font-size: 31px!important;
+        color: rgb(224 224 224)!important;
     }
 }
