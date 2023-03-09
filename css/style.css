@@ -1083,7 +1083,7 @@ span[class*="border-"] {
 
 
 #millieu{
-    left: 25%!important;
+    left: 25%;
     
 }
 /* CSS */
@@ -1138,9 +1138,21 @@ span[class*="border-"] {
     background: none;
   }
   
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     .button-64 {
       font-size: 24px;
       min-width: 196px;
+    }
+    #millieu{
+        left: 0%;
+        
+    }
+    .row{
+        margin-top: 20px;
+    }
+    .choi, .choiX {
+        top: 40px!important;
+        gap: 24px!important;
+
     }
   }
