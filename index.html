@@ -244,7 +244,7 @@
 
 			// Génération de la liste des messages
 			messagesList.innerHTML = messages.map((message) => {
-				return `<li><span style="font-size: 26px; font-weight: 400;">${message.pseudo}:</span><br>Coups utilisés: ${message.message}</li>`;
+				return `<li><span style="font-size: 26px; font-weight: 400;">${message.pseudo}:</span><br>Coups restants: ${message.message}</li>`;
 			}).join("");
 		});
 
@@ -257,6 +257,10 @@
 				pseudoG = document.getElementById('psd').value;
 			}
 			if (pseudo !== "") {
+				if(pseudo.length > 10){
+                    alert("Pseudo limité à 10 caractères") 
+                    return
+                }
 				var tuPeux = 1
 				const usersRef = ref(database, 'users');
 				const dbRef = ref(getDatabase());
